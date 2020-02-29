@@ -1,1 +1,48 @@
 <!DOCTYPE html>
+
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js}" type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <link rel="stylesheet" th:href="@{/style/style.css}" type="text/css">
+    <title th:text="${title}"></title>
+    <base th:href="@{/}">
+</head>
+
+
+<body>
+
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand p-2" th:href="@{/}">
+            <img th:src="@{/icons/logo.svg}" alt="" height="50" width="50" class="d-inline-block">
+            JobTI
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a th:href="@{/}" class="nav-item nav-link text-dark">Home</a>
+            </div>
+            <div class="navbar-nav">
+                <a th:href="@{/login}" class="nav-item nav-link text-dark">Login</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<footer class="footer bg-dark mt-auto py-3 text-center" th:fragment="footer">
+    <div class="container-fluid">
+        <span class="text-white">JobTI Platform  <time
+                th:text="${T(java.util.Calendar).getInstance().get(T(java.util.Calendar).YEAR)}">date</time> by Highway 177</span>
+    </div>
+</footer>
+
+</body>

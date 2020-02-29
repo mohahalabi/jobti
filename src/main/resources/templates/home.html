@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>JobTI</title>
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="master::head('JobTI')">
+
 </head>
 <body>
-<h1> Hello from JobTI</h1>
+
+<header th:replace="master::header"></header>
+
+
+<main role="main">
+    <div class="container m-md-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card  mb-3 p-2">
+                    <img th:src="@{/images/landing-image.jpeg}" class="card-img-top" alt="">
+                    <div class="card-body ">
+                        <h5 class="card-title">JobTI è una piattaforma ... </h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <a th:href="@{/info}" class="btn btn-primary">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Azienda</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a th:href="@{/company}" class="btn btn-primary">Registra ora</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Privato</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a th:href="@{/private}" class="btn btn-primary">Registra ora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+<footer th:replace="master::footer"></footer>
 </body>
 </html>
