@@ -183,4 +183,6 @@ public class Company {
     public void setRcNum(int rcNum) {
         this.rcNum = rcNum;
     }
+
+
 }

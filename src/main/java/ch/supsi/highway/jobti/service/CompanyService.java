@@ -16,4 +16,15 @@ public class CompanyService {
         return cmpRepo.findAll();
     }
 
+    public Company findById (int id){
+        return cmpRepo.findById(id).orElse(null);
+    }
+
+    public Company save(Company cmp){
+        return cmpRepo.save(cmp);
+    }
+    public void delete (Company cmp){
+        cmpRepo.delete(cmp);
+    }
+
 }

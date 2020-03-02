@@ -1,4 +1,4 @@
-package ch.supsi.highway.jobti.config.config;
+package ch.supsi.highway.jobti.config;
 
 import ch.supsi.highway.jobti.model.Private;
 import ch.supsi.highway.jobti.service.PrivateService;

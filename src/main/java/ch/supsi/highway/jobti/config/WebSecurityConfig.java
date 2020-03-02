@@ -1,5 +1,6 @@
-package ch.supsi.highway.jobti.config.config;
+package ch.supsi.highway.jobti.config;
 
+import ch.supsi.highway.jobti.config.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
