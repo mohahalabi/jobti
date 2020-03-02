@@ -28,12 +28,12 @@ public class MainController {
         return "register";
     }
 
-//    @GetMapping(value = "/icons/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)
-//    @ResponseBody
-//    public byte[] icons(@PathVariable String iconName) throws IOException {
-//        if (iconName.equals("logo.svg"))
-//            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/logo.svg"));
-//        return null;
-//    }
+    @GetMapping(value = "/icons/fav/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
+    public byte[] icons(@PathVariable String iconName) throws IOException {
+        if (iconName.equals("logo.jpg"))
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/fav/logo.jpg"));
+        return null;
+    }
 
 }
