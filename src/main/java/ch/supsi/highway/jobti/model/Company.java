@@ -1,9 +1,6 @@
 package ch.supsi.highway.jobti.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,6 +15,13 @@ public class Company {
     @NotNull
     private String email;
 
+    @NotNull
+    private  String password;
+
+    @ManyToOne
+    @NotNull
+    private Role role;
+
     private int foundationDate;
     private String sector;
     private int phoneNum;
@@ -31,23 +35,9 @@ public class Company {
     private int employeeNum;
     private int rcNum;
 
-    public Company(String name, String email, int foundationDate, String sector, int phoneNum, String socialReason, String address,
-                   String postcode, String city, String country, String site, String description, int employeeNum, int rcNum){
-        this.name=name;
-        this.email=email;
-        this.foundationDate=foundationDate;
-        this.sector=sector;
-        this.phoneNum=phoneNum;
-        this.socialReason=socialReason;
-        this.address=address;
-        this.postcode=postcode;
-        this.city=city;
-        this.country=country;
-        this.site=site;
-        this.description=description;
-        this.employeeNum=employeeNum;
-        this.rcNum=rcNum;
-    }
+
+    //TODO: create appropriate constructor
+    
 
     public Company(String name, String email, String sector, String socialReason, String address,
                    String postcode, String city, String country){
@@ -184,5 +174,19 @@ public class Company {
         this.rcNum = rcNum;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

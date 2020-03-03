@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master::head('JobTI')"></head>
+<body>
+
+<header th:replace="master::header"></header>
+
+<main role="main">
+    <div class="container md-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="card my-3 p-2" style="background-color: lightgray">
+                    <div class="row no-gutters">
+                        <div class="col-md-2 p-4" >
+                            <img th:src="@{/images/user.jpg}" class="card-img-top h-100 rounded-circle" alt="...">
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <h5 class="card-title">Alice Liddel</h5>
+                                <p class="card-text">Alice is a freelance web designer and developer based in London. She is specialized in HTML5, CSS3, JavaScript, Bootstrap, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card  mb-3 p-2">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="choose" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#home" role="tab">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#profile" role="tab">Profilo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#portfolio" role="tab">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact" role="tab">Contatta</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home" role="tabpanel">
+                                <p class="card-text">Il tuo profilo è completo al <b>25%</b></p>
+                                <div class="progress" style="height: 30px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="profile" role="tabpanel">
+                                <p class="card-text">Profile</p>
+                            </div>
+                            <div class="tab-pane" id="portfolio" role="tabpanel">
+                                <p class="card-text">Portfolio</p>
+                            </div>
+                            <div class="tab-pane" id="contact" role="tabpanel">
+                                <p class="card-text">Contact</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+<footer th:replace="master::footer"></footer>
+</body>
+<script>
+    $('#choose a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+</html>

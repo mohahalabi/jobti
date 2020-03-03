@@ -25,7 +25,12 @@ public class MainController {
 
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
-        return "register";
+        return "registerDef";
+    }
+
+    @GetMapping(value="/profile/{id}")
+    public String registerUser(Model model, @PathVariable int id) {
+        return "profile";
     }
 
     @GetMapping(value = "/icons/fav/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)

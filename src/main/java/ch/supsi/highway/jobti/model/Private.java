@@ -1,9 +1,6 @@
 package ch.supsi.highway.jobti.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -22,13 +19,24 @@ public class Private {
     private String email;
 
     @NotNull
+    private String password;
+
+    @NotNull
     private int birthdate;
+
+    @ManyToOne
+    @NotNull
+    private Role role;
 
     private String address;
     private String postcode;
     private String city;
     private String country;
 
+    private int credits;
+    private int views;
+
+    //TODO: create appropriate constructor
     public Private(String name, String surname, String email, int birthdate, String address, String postcode, String city, String country) {
         this.name = name;
         this.surname= surname;
@@ -39,6 +47,8 @@ public class Private {
         this.city=city;
         this.country=country;
     }
+
+
 
     public Private() {
     }
@@ -115,5 +125,35 @@ public class Private {
         this.country = country;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
 }

@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="it" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="master::head('JobTI')">
-
-</head>
+<head th:replace="master::head('JobTI')"></head>
 <body>
 
 <header th:replace="master::header"></header>
 
 <main role="main">
-    <div class="container md-4">
+    <div class="container md-4 my-2">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">
-                <div class="card  mb-3 p-2">
-                    <img th:src="@{/images/landing-image.jpeg}" class="card-img-top" alt="">
+                <div class="card my-2 p-2">
+                    <img th:src="@{/images/landing-image.jpeg}" class="card-img-top" alt="" style="max-width: 500px; align-self: center;">
                     <div class="card-body ">
                         <h5 class="card-title">JobTI è una piattaforma ... </h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -24,9 +21,9 @@
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center ">
             <div class="col-md-6">
-                <div class="card">
+                <div class="card my-2 p-2">
                     <div class="card-body">
                         <h5 class="card-title">Azienda</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -35,7 +32,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="card">
+                <div class="card my-2 p-2">
                     <div class="card-body">
                         <h5 class="card-title">Privato</h5>
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -48,10 +45,6 @@
     </div>
 
 </main>
-
-
-
-
 <footer th:replace="master::footer"></footer>
 </body>
 </html>
