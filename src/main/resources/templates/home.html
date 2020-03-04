@@ -7,21 +7,26 @@
 <header th:replace="master::header"></header>
 
 <main role="main">
-    <div class="container md-4 my-2">
-        <div class="row d-flex justify-content-center">
+
+    <div class="container my-5">
+
+        <div class="row d-flex justify-content-center my-4">
             <div class="col-md-12">
-                <div class="card my-2 p-2">
-                    <img th:src="@{/images/landing-image.jpeg}" class="card-img-top" alt="" style="max-width: 500px; align-self: center;">
-                    <div class="card-body ">
-                        <h5 class="card-title">JobTI è una piattaforma ... </h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="card rounded-0 bg-transparent">
+                    <img alt="" class="card-img rounded-0" th:src="@{/images/landing-image.jpeg}">
+                    <div class="jumbotron rounded-0 my-0 p-4">
+                        <h1 class="display-4">JobTI è una piattaforma...</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                            attention to featured content or information.</p>
+                        <p>It uses utility classes for typography and spacing to space content out within the larger
+                            container.</p>
                         <a th:href="@{/info}" class="btn btn-primary">Scopri di più</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center ">
+        <div class="row d-flex justify-content-center my-4">
             <div class="col-md-6">
                 <div class="card my-2 p-2">
                     <div class="card-body">
