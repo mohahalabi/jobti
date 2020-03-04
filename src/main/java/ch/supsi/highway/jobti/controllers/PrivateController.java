@@ -32,7 +32,7 @@ public class PrivateController {
 
     @PostMapping(value="/privates", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Private> post(@RequestBody Private pvt){
-        if (pvt.getEmail()==null)
+        if (pvt.getEmail()==null || pvt.getName()==null || pvt.getSurname()==null || pvt.getPassword()==null || pvt.getRole()==null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         pvtSrv.save(pvt);

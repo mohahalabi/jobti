@@ -21,7 +21,6 @@ public class Private {
     @NotNull
     private String password;
 
-    @NotNull
     private int birthdate;
 
     @ManyToOne
@@ -37,17 +36,16 @@ public class Private {
     private int views;
 
     //TODO: create appropriate constructor
-    public Private(String name, String surname, String email, int birthdate, String address, String postcode, String city, String country) {
-        this.name = name;
-        this.surname= surname;
+    public Private(String name, String surname, String email, String password, Role role){
+        this.name=name;
+        this.surname = surname;
         this.email=email;
-        this.birthdate = birthdate;
-        this.address= address;
-        this.postcode=postcode;
-        this.city=city;
-        this.country=country;
-    }
+        this.password=password;
+        this.role=role;
 
+        this.credits=10;
+        this.views=0;
+    }
 
 
     public Private() {

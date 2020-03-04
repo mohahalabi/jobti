@@ -37,21 +37,15 @@ public class Company {
 
 
     //TODO: create appropriate constructor
-    
-
-    public Company(String name, String email, String sector, String socialReason, String address,
-                   String postcode, String city, String country){
-        this.name=name;
-        this.email=email;
-        this.sector=sector;
-        this.socialReason=socialReason;
-        this.address=address;
-        this.postcode=postcode;
-        this.city=city;
-        this.country=country;
-    }
 
     public Company() {
+    }
+
+    public Company(String name, String email, String password, Role role ){
+        this.name=name;
+        this.email=email;
+        this.password=password;
+        this.role=role;
     }
 
     public int getCompanyId() {
