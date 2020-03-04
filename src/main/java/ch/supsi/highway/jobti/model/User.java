@@ -30,7 +30,8 @@ public abstract class User {
 
     private int birthdate;
 
-
+    public User() {
+    }
 
     public int getId() {
         return id;

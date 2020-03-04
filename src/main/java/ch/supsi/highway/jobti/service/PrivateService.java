@@ -45,10 +45,10 @@ public class PrivateService {
             roleService.save(new Role("ROLE_USER"));
         }
 
-        if(getAll().size() == 0){
-            Private admin= new Private("admin","admin", "admin@jobti.ch","1234", new Role("ROLE_ADMIN")  );
-            save(admin);
-        }
+//        if(getAll().size() == 0){
+//            Private admin= new Private("admin","admin", "admin@jobti.ch","1234", new Role("ROLE_ADMIN")  );
+//            save(admin);
+//        }
     }
 
     public byte[] setEmptyImage() throws IOException {
