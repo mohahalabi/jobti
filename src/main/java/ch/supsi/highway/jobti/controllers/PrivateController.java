@@ -44,7 +44,7 @@ public class PrivateController {
         Private pvt = pvtSrv.findById(id);
         if (pvt == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        pvt.setPrivateId(id);
+        pvt.setId(id);
         pvtSrv.save(pvt);
         return new ResponseEntity<>(pvt, HttpStatus.OK);
     }

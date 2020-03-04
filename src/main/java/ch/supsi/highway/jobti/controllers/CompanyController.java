@@ -45,7 +45,7 @@ public class CompanyController {
         Company cmp = cmpSrv.findById(id);
         if (cmp == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        cmp.setCompanyId(id);
+        cmp.setId(id);
         cmpSrv.save(cmp);
         return new ResponseEntity<>(cmp, HttpStatus.OK);
     }
