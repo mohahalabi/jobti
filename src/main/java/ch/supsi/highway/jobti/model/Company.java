@@ -3,6 +3,7 @@ package ch.supsi.highway.jobti.model;
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorValue("company")
 public class Company extends User {
     private String sector;
     private int phoneNum;

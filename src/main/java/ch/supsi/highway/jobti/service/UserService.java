@@ -1,6 +1,5 @@
 package ch.supsi.highway.jobti.service;
 
-
 import ch.supsi.highway.jobti.model.User;
 import ch.supsi.highway.jobti.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(int id) {
+    public User findById(String id) {
         return userRepository.findById(id).orElse(null);
     }
 

@@ -1,11 +1,10 @@
 package ch.supsi.highway.jobti.repository;
 
 import ch.supsi.highway.jobti.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
+import javax.transaction.Transactional;
 
-@NoRepositoryBean
-public interface UserRepository<T extends User, Integer> extends JpaRepository <User, Integer>
+@Transactional
+public interface UserRepository extends UserBaseRepository <User, String>
 {
 
 }

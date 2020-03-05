@@ -1,23 +1,20 @@
 package ch.supsi.highway.jobti.model;
 
-import org.omg.CORBA.DATA_CONVERSION;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@Entity
-@Inheritance
+@Entity(name="user")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="user_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @NotNull
+    private String email;
 
     @NotNull
     private String name;
-
-    @NotNull
-    private String email;
 
     @NotNull
     private String password;
@@ -62,16 +59,6 @@ public abstract class User {
         this.description=description;
         this.birthdate=birthdate;
         this.image= image;
-    }
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

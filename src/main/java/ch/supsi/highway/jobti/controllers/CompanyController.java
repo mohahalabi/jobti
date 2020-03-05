@@ -22,7 +22,7 @@ public class CompanyController {
     }
 
     @GetMapping(value="/companies/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Company> get(@PathVariable int id) {
+    public ResponseEntity<Company> get(@PathVariable String id) {
         Company cmp = cmpSrv.findById(id);
         if (cmp != null){
             return new ResponseEntity<>(cmp, HttpStatus.OK);
@@ -41,17 +41,17 @@ public class CompanyController {
     }
 
     @PutMapping(value="/companies/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Company> put (@PathVariable int id, @RequestBody Company newCmp) {
+    public ResponseEntity<Company> put (@PathVariable String id, @RequestBody Company newCmp) {
         Company cmp = cmpSrv.findById(id);
         if (cmp == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        cmp.setId(id);
+        cmp.setEmail(id);
         cmpSrv.save(cmp);
         return new ResponseEntity<>(cmp, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/companies/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> delete (@PathVariable int id ) {
+    public ResponseEntity<String> delete (@PathVariable String id ) {
         String success = "{\n" +
                 " \"success\": \"true\"\n" +
                 "}";

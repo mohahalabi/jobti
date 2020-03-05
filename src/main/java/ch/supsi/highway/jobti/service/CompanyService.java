@@ -18,7 +18,7 @@ public class CompanyService {
         return cmpRepo.findAll();
     }
 
-    public Company findById (int id){
+    public Company findById (String id){
         return cmpRepo.findById(id).orElse(null);
     }
 

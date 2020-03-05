@@ -1,9 +1,9 @@
 package ch.supsi.highway.jobti.repository;
 
 import ch.supsi.highway.jobti.model.Private;
-import org.springframework.stereotype.Repository;
+import javax.transaction.Transactional;
 
-@Repository
-public interface PrivateRepository extends UserRepository<Private, Integer> {
+@Transactional
+public interface PrivateRepository extends UserBaseRepository<Private, String> {
 }
 
