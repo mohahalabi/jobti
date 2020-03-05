@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="it" xmlns:th="http://www.thymeleaf.org"
->
+<html lang="it" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
 
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
@@ -36,9 +35,13 @@
                 <a class="nav-link text-dark" th:href="@{/}">Contattaci</a>
             </div>
 
-            <div class="navbar-nav">
+            <div class="navbar-nav" sec:authorize="!isAuthenticated()">
                 <a class="nav-item btn btn-outline-dark" th:href="@{/login}">Login</a>
             </div>
+            <div class="navbar-nav" sec:authorize="isAuthenticated()">
+                <a class="nav-item btn btn-outline-dark" th:href="@{/logout}">Logout</a>
+            </div>
+
         </div>
     </nav>
 </header>
