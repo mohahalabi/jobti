@@ -42,7 +42,8 @@ public class PrivateService {
 
         if(roleService.getAll().size() == 0) {
             roleService.save(new Role("ROLE_ADMIN"));
-            roleService.save(new Role("ROLE_USER"));
+            roleService.save(new Role("ROLE_COMPANY"));
+            roleService.save(new Role("ROLE_PRIVATE"));
         }
 
 //        if(getAll().size() == 0){

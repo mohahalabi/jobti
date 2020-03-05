@@ -1,7 +1,6 @@
 package ch.supsi.highway.jobti.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Company extends User {
@@ -9,18 +8,25 @@ public class Company extends User {
     private int phoneNum;
     private String socialReason;
     private String site;
-    private String description;
     private int employeeNum;
     private int rcNum;
-
-
-    //TODO: create appropriate constructor
 
     public Company() {
     }
 
-    public Company(String name, String email, String password, Role role ){
+    public Company(String name, String email,  String password,Role role){
+        super(name, email, password, role);
+    }
 
+    public Company(String name, String email,  String password,Role role,  String sector, int phoneNum,
+             String socialReason, String site, int employeeNum, int rcNum){
+        super(name, email, password, role);
+        this.sector = sector;
+        this.phoneNum=phoneNum;
+        this.socialReason=socialReason;
+        this.site= site;
+        this.employeeNum=employeeNum;
+        this.rcNum=rcNum;
     }
 
     public String getSector() {
@@ -53,14 +59,6 @@ public class Company extends User {
 
     public void setSite(String site) {
         this.site = site;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getEmployeeNum() {
