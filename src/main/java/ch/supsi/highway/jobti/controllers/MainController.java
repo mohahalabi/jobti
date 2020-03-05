@@ -23,6 +23,11 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("/info")
+    public String info(Model model) {
+        return "info";
+    }
+
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
         return "registerDef";

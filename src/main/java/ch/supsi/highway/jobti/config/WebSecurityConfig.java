@@ -1,6 +1,5 @@
 package ch.supsi.highway.jobti.config;
 
-import ch.supsi.highway.jobti.config.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/roles/**").permitAll()
                 .antMatchers("/privates/**").permitAll()
                 .antMatchers("/companies/**").permitAll()
+                .antMatchers("/info").permitAll()
                 .antMatchers(("/profile/**")).permitAll()
                 .antMatchers("/login", "/register/**").permitAll()
                 .anyRequest().authenticated()
