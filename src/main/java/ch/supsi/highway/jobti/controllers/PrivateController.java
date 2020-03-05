@@ -1,5 +1,4 @@
 package ch.supsi.highway.jobti.controllers;
-
 import ch.supsi.highway.jobti.model.Private;
 import ch.supsi.highway.jobti.service.PrivateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +59,5 @@ public class PrivateController {
         pvtSrv.delete(pvt);
         return new ResponseEntity<>(success, HttpStatus.OK);
     }
+
 }
