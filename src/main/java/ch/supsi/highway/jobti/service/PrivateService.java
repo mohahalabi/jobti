@@ -23,13 +23,14 @@ public class PrivateService {
         return pvtRepo.findAll();
     }
 
-    public Private findById (int id){
+    public Private findById (String id){
         return pvtRepo.findById(id).orElse(null);
     }
 
     public Private save(Private pvt){
         return pvtRepo.save(pvt);
     }
+
     public void delete (Private pvt){
         pvtRepo.delete(pvt);
     }
@@ -39,16 +40,16 @@ public class PrivateService {
     public void init() throws IOException {
         BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
 
-
         if(roleService.getAll().size() == 0) {
             roleService.save(new Role("ROLE_ADMIN"));
-            roleService.save(new Role("ROLE_USER"));
+            roleService.save(new Role("ROLE_COMPANY"));
+            roleService.save(new Role("ROLE_PRIVATE"));
         }
 
-//        if(getAll().size() == 0){
-//            Private admin= new Private("admin","admin", "admin@jobti.ch","1234", new Role("ROLE_ADMIN")  );
-//            save(admin);
-//        }
+        if(getAll().size() == 0){
+            Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), new Role("ROLE_ADMIN")  );
+            save(admin);
+        }
     }
 
     public byte[] setEmptyImage() throws IOException {

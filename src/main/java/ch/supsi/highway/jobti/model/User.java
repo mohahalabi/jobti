@@ -2,19 +2,19 @@ package ch.supsi.highway.jobti.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
-@Entity
-@Inheritance
+@Entity(name="user")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="user_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @NotNull
+    private String email;
 
     @NotNull
     private String name;
-
-    @NotNull
-    private String email;
 
     @NotNull
     private String password;
@@ -26,19 +26,39 @@ public abstract class User {
     private String address;
     private String postcode;
     private String city;
+    private String region;
     private String country;
 
-    private int birthdate;
+    private String description;
+    private Date birthdate;
+
+    @Lob
+    private byte [] image;
 
     public User() {
     }
 
-    public int getId() {
-        return id;
+    public User(String name, String email, String password,Role role) {
+        this.name=name;
+        this.email=email;
+        this.password= password;
+        this.role=role;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(String name, String email,  String password,Role role, String address, String postcode,String city,
+                String region, String country, String description, Date birthdate, byte [] image) {
+        this.name=name;
+        this.email=email;
+        this.password= password;
+        this.role=role;
+        this.address=address;
+        this.postcode=postcode;
+        this.city=city;
+        this.region=region;
+        this.country=country;
+        this.description=description;
+        this.birthdate=birthdate;
+        this.image= image;
     }
 
     public String getName() {
@@ -97,6 +117,14 @@ public abstract class User {
         this.city = city;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
     public String getCountry() {
         return country;
     }
@@ -105,11 +133,27 @@ public abstract class User {
         this.country = country;
     }
 
-    public int getBirthdate() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(int birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

@@ -1,5 +1,4 @@
 package ch.supsi.highway.jobti.controllers;
-
 import ch.supsi.highway.jobti.model.Private;
 import ch.supsi.highway.jobti.service.PrivateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class PrivateController {
     }
 
     @GetMapping(value="/privates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Private> get(@PathVariable int id) {
+    public ResponseEntity<Private> get(@PathVariable String id) {
         Private pvt = pvtSrv.findById(id);
         if (pvt != null){
             return new ResponseEntity<>(pvt, HttpStatus.OK);
@@ -40,24 +39,24 @@ public class PrivateController {
     }
 
     @PutMapping(value="/privates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Private> put (@PathVariable int id, @RequestBody Private newPvt) {
+    public ResponseEntity<Private> put (@PathVariable String id, @RequestBody Private newPvt) {
         Private pvt = pvtSrv.findById(id);
         if (pvt == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        pvt.setId(id);
+        pvt.setEmail(id);
         pvtSrv.save(pvt);
         return new ResponseEntity<>(pvt, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/privates/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> delete (@PathVariable int id ) {
+    public ResponseEntity<String> delete (@PathVariable String id ) {
         String success = "{\n" +
                 " \"success\": \"true\"\n" +
                 "}";
         Private pvt = pvtSrv.findById(id);
-        if (pvt== null)
-            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        if (pvt== null)            return new ResponseEntity<>( HttpStatus.NOT_FOUND);
         pvtSrv.delete(pvt);
         return new ResponseEntity<>(success, HttpStatus.OK);
     }
+
 }
