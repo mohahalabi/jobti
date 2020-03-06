@@ -23,6 +23,11 @@ public class MainController {
         return "login";
     }
 
+    @GetMapping("/messages")
+    public String messages(Model model) {
+        return "messages";
+    }
+
     @GetMapping("/info")
     public String info(Model model) {
         return "info";
