@@ -1,17 +1,26 @@
 package ch.supsi.highway.jobti.controllers;
 
+import ch.supsi.highway.jobti.model.Private;
+import ch.supsi.highway.jobti.model.Role;
+import ch.supsi.highway.jobti.service.PrivateService;
+import ch.supsi.highway.jobti.service.RoleService;
 import org.aspectj.util.FileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    private PrivateService privateService;
+
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -35,7 +44,18 @@ public class MainController {
 
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
+        if (user.equals("private")){
+            model.addAttribute(new Private());
+            return "/registerPrivate";
+        }
         return "registerDef";
+    }
+
+    @PostMapping("/register/private")
+    public String registerPrivete(@ModelAttribute Private p) {
+        p.setRole(roleService.findById("ROLE_PRIVATE"));
+        privateService.save(p);
+        return "redirect:/login";
     }
 
     @GetMapping(value="/profile/{id}")
