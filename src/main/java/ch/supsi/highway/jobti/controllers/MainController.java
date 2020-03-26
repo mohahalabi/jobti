@@ -1,7 +1,6 @@
 package ch.supsi.highway.jobti.controllers;
 
 import ch.supsi.highway.jobti.model.Private;
-import ch.supsi.highway.jobti.model.Role;
 import ch.supsi.highway.jobti.service.PrivateService;
 import ch.supsi.highway.jobti.service.RoleService;
 import org.aspectj.util.FileUtil;
@@ -42,6 +41,11 @@ public class MainController {
         return "info";
     }
 
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        return "contact";
+    }
+
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
         if (user.equals("private")){
@@ -61,6 +65,21 @@ public class MainController {
     @GetMapping(value="/profile/{id}")
     public String registerUser(Model model, @PathVariable int id) {
         return "profile";
+    }
+
+    @GetMapping(value="/about")
+    public String about() {
+        return "about";
+    }
+
+    @GetMapping(value="/info/{type}")
+    public String getInfo(Model model, @PathVariable String type) {
+        if (type.equals("private")){
+            return "private";
+        }else if (type.equals("company")){
+            return "company";
+        }
+        return "/";
     }
 
     @GetMapping(value = "/icons/fav/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)

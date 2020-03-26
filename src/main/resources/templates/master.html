@@ -31,8 +31,8 @@
 
             <div class="navbar-nav">
                 <a class="nav-link text-dark" th:href="@{/}">Home</a>
-                <a class="nav-link text-dark" th:href="@{/}">Chi siamo</a>
-                <a class="nav-link text-dark" th:href="@{/}">Contattaci</a>
+                <a class="nav-link text-dark" th:href="@{/about}">Chi siamo</a>
+                <a class="nav-link text-dark" th:href="@{/contact}">Contattaci</a>
             </div>
 
             <div class="navbar-nav" sec:authorize="!isAuthenticated()">
@@ -46,7 +46,7 @@
     </nav>
 </header>
 
-<footer class="footer bg-dark mt-auto p-4 text-center" th:fragment="footer">
+<footer class="footer bg-dark mt-auto p-4 text-center" th:fragment="footer" >
     <div class="container-fluid">
         <span class="text-white">JobTI Platform  <time
                 th:text="${T(java.util.Calendar).getInstance().get(T(java.util.Calendar).YEAR)}">date</time> by Highway 177</span>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master::head('JobTI')"></head>
+<body>
+
+<header th:replace="master::header"></header>
+
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Privato</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Ecco cosa offre JobTi per i privati</h6>
+                        <p class="card-text text-justify">
+                            La piattaforma JobTI è stata ideata con lo scopo di mettere in evidenza i pregi dei candidati che si iscrivono alla piattaforma, in modo tale da essere chiari e facilmente individuabili dalle società che necessitano di personale specializzato.
+                            Per fare ciò ci affidiamo a test psicologici pensati per risaltare particolarità personali di ogni singolo lavoratore che cerca di andare nel mondo del lavoro, in questo modo oltre all’esperienza lavorativa e quella formativa il vantaggio competitivo viene dato dalla personalità, la quale può essere vista come punto differenziate fra curriculum simili.
+                            Oltre a questo nel profilo di ogni candidato verrà posta una guida sulla redazione di un breve video di presentazione, il quale verrà messo a diretta disposizione per le imprese interessate.
+                            Considerando il livello di spontaneità che ne scaturisce, sommato ai consigli dati dal nostro team di esperti, questo può diventare uno strumento forte per incentivare il datore di lavoro a svolgere un primo colloquio di lavoro e chissà forse in futuro portare ad un assunzione.
+                            Importante
+                            Per motivi di privacy e per permettere una più efficiente ed efficace allocazione del personale in cerca di lavoro, tutti i dati dei singoli iscritti sono trasferiti alle società solo dal momento in cui queste provano essere realmente interessate al profilo e lo hanno preso in considerazione per una potenziale futura assunzione.
+                            Per poter sviluppare un sistema che permetta di raggiungere i livelli di privacy, efficacia ed efficienza citati in precedenza abbiamo messo appunto una struttura a crediti, la quale presuppone che ogni account privato abbia a disposizione gratuitamente (dal momento in cui un soggetto si iscrive) 10 crediti, questi vengono scalati nel momento un impresa presenta un reale interesse verso il profilo (ossia decide di inserire il candidato nelle top 5 candidature al posto di lavoro), presentando quindi alte probabilità per la persona di essere poi assunta.
+                            Per poter mantenere il profilo visibile alle imprese è necessario avere un saldo di crediti maggiore di zero, per fare ciò si può acquisire il credito direttamente sulla nostra piattaforma oppure invitare amici e conoscenti ad iscriversi sulla piattaforma, una volta che i profili degli invitati sono attivi, vengono accreditati altri 10 crediti direttamente sul vostro profilo.
+                            Questa offerta è stata pensata sia per persone disoccupate in cerca di lavoro sia per coloro che hanno già un occupazione ma cercano nuove esperienze lavorative, ma voglio mantenere un certo livello di segretezza, per evitare di informare il corrente datore di lavoro sulla ricerca.
+                        </p>
+                        <a th:href="@{/register/private}" class="btn btn-primary">Registra ora</a>
+<!--                        <a class="card-link" href="#">Card link</a>-->
+<!--                        <a class="card-link" href="#">Another link</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="master::footer"></footer>
+</body>
+</html>

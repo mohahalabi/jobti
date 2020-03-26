@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master::head('JobTI')"></head>
+<body>
+
+<header th:replace="master::header"></header>
+
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Azienda</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Ecco cosa offre JobTi per le aziende</h6>
+                        <p class="card-text text-justify">
+                            Testo!
+                        </p>
+                        <a th:href="@{/register/company}" class="btn btn-primary">Registra ora</a>
+<!--                        <a class="card-link" href="#">Card link</a>-->
+<!--                        <a class="card-link" href="#">Another link</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="master::footer"></footer>
+</body>
+</html>
