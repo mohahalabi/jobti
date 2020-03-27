@@ -33,7 +33,7 @@ public class MainController {
 
     @GetMapping("/messages")
     public String messages() {
-        return "messages";
+        return "fragMessages";
     }
 
     @GetMapping("/info")
@@ -85,9 +85,9 @@ public class MainController {
     @GetMapping(value="/info/{type}")
     public String getInfo(Model model, @PathVariable String type) {
         if (type.equals("private")){
-            return "private";
+            return "infoPrivate";
         }else if (type.equals("company")){
-            return "company";
+            return "infoCompany";
         }
         return "/";
     }
