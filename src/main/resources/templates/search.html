@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master::head('JobTI')"></head>
+<body>
+
+<header th:replace="master::header"></header>
+
+<main role="main">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row col-12">
+                    <button onclick="toggler()" id="toggler" class="btn btn-outline-primary" type="button" data-toggle="collapse"
+                            data-target="#filters" aria-expanded="false" aria-controls="filters"
+                            style="min-width: 38px">
+                            +
+                        </button>
+                    <h2 class="col-9 mb-0">Filtra</h2>
+                </div>
+                <hr>
+                <div class="my-1"></label>
+                    <label class="col-12" for="sector">Settore professionale</label>
+                    <select id="sector" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                            data-selected-text-format="count" data-header="Seleziona settore">
+                        <option>Medico</option>
+                        <option>Alberghiero</option>
+                        <option>Artistico</option>
+                        <option>Economico</option>
+                        <option>Giuridico</option>
+                        <option>Informatico</option>
+                        <option>Elettronico</option>
+                        <option>Meccanico</option>
+                    </select>
+                </div>
+                <div id="filters" class="collapse">
+                    <div class="my-1"></label>
+                        <label class="col-12" for="edu">Formazione</label>
+                        <select id="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                                data-selected-text-format="count" data-header="seleziona formazione">
+                            <option>professionale di base</option>
+                            <option>professionale superiore</option>
+                            <option>SUP, ASP, SPF o universitaria</option>
+                            <option>Bachelor</option>
+                            <option>Master</option>
+                            <option>Dottorato</option>
+                        </select>
+                    </div>
+                    <div class="my-1">
+                        <label class="col-12" for="lang">Lingua</label>
+                        <select id="lang" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                                data-selected-text-format="count" data-header="Seleziona lingua">
+                            <option>Italiano</option>
+                            <option>Tedesco</option>
+                            <option>Francese</option>
+                            <option>Inglese</option>
+                            <option>Spagnolo</option>
+                            <option>Russo</option>
+                        </select>
+                    </div>
+                    <div class="my-1">
+                        <label class="col-12" for="age">Età</label>
+                        <select id="age" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                                data-selected-text-format="count" data-header="Seleziona fascia">
+                            <option>18-20</option>
+                            <option>21-30</option>
+                            <option>31-40</option>
+                            <option>41-50</option>
+                            <option>50+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 mx-0 px-0">
+                    <div class="row col-12 my-3">
+                        <button onclick="toggler()" id="toggler1" class="btn btn-outline-primary" type="button" data-toggle="collapse"
+                                data-target="#filters" aria-expanded="false" aria-controls="filters"
+                                style="min-width: 38px">
+                            +
+                        </button>
+                        <p id="txtFilter" class="col-9 mb-0">Visualizza altri filtri</p>
+                    </div>
+                    <div class="col-12 text-right mt-3 px-0">
+                        <a th:href="@{#}" class="btn btn-primary">Cerca</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h2> Risultati</h2>
+                <hr>
+                <div class="card-deck">
+                    <div class="card">
+                        <img th:src="@{images/user-avatar-green.svg}" class="card-img-top p-3" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Pinco Pallino </h5>
+                            <p class="card-text">Parruchiere</p>
+                            <p class="card-text"><small class="text-muted">Ticino, Svizzera</small></p>
+                            <a href="#" class="btn btn-primary">Visita</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img th:src="@{images/user-avatar.svg}" class="card-img-top p-3" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Marco Bianchi </h5>
+                            <p class="card-text">Boscaiolo</p>
+                            <p class="card-text"><small class="text-muted">Grigioni, Svizzera</small></p>
+                            <a href="#" class="btn btn-primary">Visita</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img th:src="@{images/user-avatar-blue.svg}" class="card-img-top p-3" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">James Bond </h5>
+                            <p class="card-text">Segretario</p>
+                            <p class="card-text"><small class="text-muted">Ticino, Svizzera</small></p>
+                            <a href="#" class="btn btn-primary">Visita</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<footer th:replace="master::footer"></footer>
+<script type="text/javascript">
+    function toggler(){
+        var button = document.getElementById("toggler");
+        var button1 = document.getElementById("toggler1");
+        var txt = document.getElementById("txtFilter");
+        if (button.classList.contains("collapsed")){
+            button.innerText="-";
+            button1.innerText="-";
+            txt.innerText="Nascondi filtri"
+        } else {
+            button.innerText="+"
+            button1.innerText="+"
+            txt.innerText="Visualizza più filtri"
+        }
+    };
+</script>
+</body>
+</html>

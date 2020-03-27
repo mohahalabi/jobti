@@ -22,27 +22,32 @@ public class MainController {
     private RoleService roleService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index() {
         return "home";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login() {
         return "login";
     }
 
     @GetMapping("/messages")
-    public String messages(Model model) {
+    public String messages() {
         return "messages";
     }
 
     @GetMapping("/info")
-    public String info(Model model) {
+    public String info() {
         return "info";
     }
 
+    @GetMapping("/search")
+    public String search() {
+        return "search";
+    }
+
     @GetMapping("/contact")
-    public String contact(Model model) {
+    public String contact() {
         return "contact";
     }
 
