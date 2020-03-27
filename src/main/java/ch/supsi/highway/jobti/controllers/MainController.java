@@ -51,6 +51,11 @@ public class MainController {
         return "contact";
     }
 
+    @GetMapping("/profilehome")
+    public String profHome() {
+        return "profilehome";
+    }
+
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
         if (user.equals("private")){
