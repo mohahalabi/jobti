@@ -24,10 +24,12 @@ public abstract class User {
     private Role role;
 
     private String address;
-    private String postcode;
+    private int postcode;
     private String city;
     private String region;
     private String country;
+
+    private String sector;
 
     private String description;
     private Date birthdate;
@@ -44,8 +46,23 @@ public abstract class User {
         this.password= password;
         this.role=role;
     }
+    public User(String name, String email, String password, Role role, String address, int postcode, String city,
+                String region, String country, Date birthdate, String sector) {
+        this.name=name;
+        this.email=email;
+        this.password= password;
+        this.role=role;
+        this.address=address;
+        this.postcode=postcode;
+        this.city=city;
+        this.region=region;
+        this.country=country;
+        this.birthdate=birthdate;
+        this.sector=sector;
+    }
 
-    public User(String name, String email,  String password,Role role, String address, String postcode,String city,
+
+    public User(String name, String email, String password, Role role, String address, int postcode, String city,
                 String region, String country, String description, Date birthdate, byte [] image) {
         this.name=name;
         this.email=email;
@@ -93,6 +110,14 @@ public abstract class User {
         this.role = role;
     }
 
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -101,11 +126,11 @@ public abstract class User {
         this.address = address;
     }
 
-    public String getPostcode() {
+    public int getPostcode() {
         return postcode;
     }
 
-    public void setPostcode(String postcode) {
+    public void setPostcode(int postcode) {
         this.postcode = postcode;
     }
 

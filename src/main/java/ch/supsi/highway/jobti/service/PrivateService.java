@@ -47,7 +47,7 @@ public class PrivateService {
         }
 
         if(getAll().size() == 0){
-            Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), new Role("ROLE_ADMIN")  );
+            Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), new Role("ROLE_ADMIN"));
             save(admin);
         }
     }

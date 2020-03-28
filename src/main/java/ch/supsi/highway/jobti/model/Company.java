@@ -1,11 +1,11 @@
 package ch.supsi.highway.jobti.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @DiscriminatorValue("company")
 public class Company extends User {
-    private String sector;
     private int phoneNum;
     private String socialReason;
     private String site;
@@ -19,23 +19,13 @@ public class Company extends User {
         super(name, email, password, role);
     }
 
-    public Company(String name, String email,  String password,Role role,  String sector, int phoneNum,
-             String socialReason, String site, int employeeNum, int rcNum){
-        super(name, email, password, role);
-        this.sector = sector;
-        this.phoneNum=phoneNum;
+    public Company(String name, String email,  String password, String address, int postcode, String city,
+                   String region, String country, Date birthdate, String sector,
+             String socialReason, String site){
+        super(name, email, password, new Role("ROLE_COMPANY"), address, postcode, city,
+                 region, country, birthdate, sector);
         this.socialReason=socialReason;
         this.site= site;
-        this.employeeNum=employeeNum;
-        this.rcNum=rcNum;
-    }
-
-    public String getSector() {
-        return sector;
-    }
-
-    public void setSector(String sector) {
-        this.sector = sector;
     }
 
     public int getPhoneNum() {

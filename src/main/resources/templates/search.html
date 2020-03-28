@@ -19,27 +19,16 @@
                     <h2 class="col-9 mb-0">Filtra</h2>
                 </div>
                 <hr>
-                <div class="my-1"></label>
-                    <label class="col-12" for="sector">Settore professionale</label>
-                    <select id="sector" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
-                            data-selected-text-format="count" data-header="Seleziona settore">
-                        <option>Medico</option>
-                        <option>Alberghiero</option>
-                        <option>Artistico</option>
-                        <option>Economico</option>
-                        <option>Giuridico</option>
-                        <option>Informatico</option>
-                        <option>Elettronico</option>
-                        <option>Meccanico</option>
-                    </select>
+                <div class="my-1">
+                    <div th:replace="master::sector"></div>
                 </div>
                 <div id="filters" class="collapse">
                     <div class="my-1"></label>
                         <label class="col-12" for="edu">Formazione</label>
-                        <select id="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                        <select id="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
                                 data-selected-text-format="count" data-header="seleziona formazione">
-                            <option>professionale di base</option>
-                            <option>professionale superiore</option>
+                            <option>Professionale di base</option>
+                            <option>Professionale superiore</option>
                             <option>SUP, ASP, SPF o universitaria</option>
                             <option>Bachelor</option>
                             <option>Master</option>
@@ -48,7 +37,7 @@
                     </div>
                     <div class="my-1">
                         <label class="col-12" for="lang">Lingua</label>
-                        <select id="lang" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                        <select id="lang" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
                                 data-selected-text-format="count" data-header="Seleziona lingua">
                             <option>Italiano</option>
                             <option>Tedesco</option>
@@ -60,7 +49,7 @@
                     </div>
                     <div class="my-1">
                         <label class="col-12" for="age">Età</label>
-                        <select id="age" class="col-12 px-0 selectpicker" data-style="btn-outline-dark" multiple
+                        <select id="age" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
                                 data-selected-text-format="count" data-header="Seleziona fascia">
                             <option>18-20</option>
                             <option>21-30</option>

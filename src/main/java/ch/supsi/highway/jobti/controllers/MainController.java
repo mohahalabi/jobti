@@ -1,22 +1,30 @@
 package ch.supsi.highway.jobti.controllers;
 
+import ch.supsi.highway.jobti.model.Company;
 import ch.supsi.highway.jobti.model.Private;
+import ch.supsi.highway.jobti.service.CompanyService;
 import ch.supsi.highway.jobti.service.PrivateService;
 import ch.supsi.highway.jobti.service.RoleService;
 import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 public class MainController {
 
     @Autowired
     private PrivateService privateService;
+
+    @Autowired
+    private CompanyService companyService;
 
     @Autowired
     private RoleService roleService;
@@ -59,16 +67,37 @@ public class MainController {
     @GetMapping(value="/register/{user}")
     public String registerUser(Model model, @PathVariable String user) {
         if (user.equals("private")){
-            model.addAttribute(new Private());
-            return "/registerPrivate";
+            model.addAttribute("private", new Private());
+            model.addAttribute("day",new String());
+            model.addAttribute("month",new String());
+            model.addAttribute("year",new String());
+            return "registerPrivate";
+        } else if (user.equals("company")) {
+            model.addAttribute("company", new Company());
+            return "registerCompany";
         }
         return "registerDef";
     }
 
     @PostMapping("/register/private")
-    public String registerPrivete(@ModelAttribute Private p) {
+    public String registerPrivete(Model model,@ModelAttribute("private") Private p, @ModelAttribute("day") String day,
+                                  @ModelAttribute("month") String month,@ModelAttribute("year") String year) {
+        BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+        p.setPassword(crypto.encode(p.getPassword()));
+        p.setBirthdate(getDate(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day)));
         p.setRole(roleService.findById("ROLE_PRIVATE"));
+        p.setCredits(10);
         privateService.save(p);
+        return "redirect:/login";
+    }
+
+    @PostMapping("/register/company")
+    public String registerPrivete(Model model,@ModelAttribute("company") Company c, @ModelAttribute("year") String year) {
+        BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+        c.setPassword(crypto.encode(c.getPassword()));
+        c.setBirthdate(getDate(Integer.parseInt(year),1,1));
+        c.setRole(roleService.findById("ROLE_COMPANY"));
+        companyService.save(c);
         return "redirect:/login";
     }
 
@@ -98,6 +127,18 @@ public class MainController {
         if (iconName.equals("logo.jpg"))
             return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/fav/logo.jpg"));
         return null;
+    }
+
+    public static Date getDate(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
     }
 
 }

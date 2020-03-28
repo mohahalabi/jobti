@@ -14,7 +14,7 @@
                     <div class="jumbotron p-4 text-center">
                         <h1 class="display-4">Registrazione</h1>
                     </div>
-                    <form method="post" th:object="${private}" id="regForm" th:action="@{/register/private}">
+                    <form method="post" th:object="${company}" id="regForm" th:action="@{/register/company}">
                         <div class="tab">
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -33,9 +33,12 @@
                                 <input class="form-control" id="name" name="name" placeholder="Nome"
                                        required>
                             </div>
+                            <div th:replace="master::socialReason"></div>
+                        </div>
+                        <div class="tab">
                             <div class="form-group">
-                                <label for="surname">Cognome</label>
-                                <input  class="form-control" id="surname" name="surname" placeholder="Cognome"
+                                <label for="site">Sito</label>
+                                <input class="form-control" id="site" name="site" placeholder="Sito"
                                        required>
                             </div>
                             <div th:replace="master::sector"></div>
@@ -43,14 +46,17 @@
                         <div class="tab">
                             <div th:replace="master::addresspicker"></div>
                         </div>
+
                         <div class="tab">
                             <div class="form-group">
-                                <label>Data di nascita</label>
-                                <div th:replace="master::datepicker"></div>
+                                <label for="year">Anno di fondazione</label>
+                                <input  class="form-control" id="year" name="year" placeholder="Anno"
+                                        required>
                             </div>
                         </div>
 
                         <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
                             <span class="step"></span>
                             <span class="step"></span>
                             <span class="step"></span>

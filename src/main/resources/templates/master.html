@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.12/dist/js/i18n/defaults-it_IT.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/messages.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/form.css}" type="text/css">
 </head>
 
 
@@ -64,3 +65,204 @@
 </footer>
 
 </body>
+
+
+<div class="form-row" th:fragment="datepicker">
+    <div class="col-4">
+        <label for="day">Giorno</label>
+        <select class="selectpicker form-control col-12 " data-size="5" id="day" name="day" title="-" data-style="btn-outline-secondary">
+            <option class="text-right" value="1">1</option>
+            <option class="text-right" value="2">2</option>
+            <option class="text-right" value="3">3</option>
+            <option class="text-right" value="4">4</option>
+            <option class="text-right" value="5">5</option>
+            <option class="text-right" value="6">6</option>
+            <option class="text-right" value="7">7</option>
+            <option class="text-right" value="8">8</option>
+            <option class="text-right" value="9">9</option>
+            <option class="text-right" value="10">10</option>
+            <option class="text-right" value="11">11</option>
+            <option class="text-right" value="12">12</option>
+            <option class="text-right" value="13">13</option>
+            <option class="text-right" value="14">14</option>
+            <option class="text-right" value="15">15</option>
+            <option class="text-right" value="16">16</option>
+            <option class="text-right" value="17">17</option>
+            <option class="text-right" value="18">18</option>
+            <option class="text-right" value="19">19</option>
+            <option class="text-right" value="20">20</option>
+            <option class="text-right" value="21">21</option>
+            <option class="text-right" value="22">22</option>
+            <option class="text-right" value="23">23</option>
+            <option class="text-right" value="24">24</option>
+            <option class="text-right" value="25">25</option>
+            <option class="text-right" value="26">26</option>
+            <option class="text-right" value="27">27</option>
+            <option class="text-right" value="28">28</option>
+            <option class="text-right" value="29">29</option>
+            <option class="text-right" value="30">30</option>
+            <option class="text-right" value="31">31</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <label for="month">Mese</label>
+        <select class="selectpicker form-control col-12" data-size="5" id="month" name="month" title="-" data-style="btn-outline-secondary">
+            <option  value="1">Gennaio</option>
+            <option  value="2">Febbraio</option>
+            <option  value="3">Marzo</option>
+            <option  value="4">Aprile</option>
+            <option  value="5">Maggio</option>
+            <option  value="6">Giugno</option>
+            <option  value="7">Luglio</option>
+            <option  value="8">Agosto</option>
+            <option  value="9">Settembre</option>
+            <option  value="10">Ottobre</option>
+            <option  value="11">Novembre</option>
+            <option  value="12">Dicembre</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <label for="year">Anno</label>
+        <select class="selectpicker form-control col-12 " data-size="5" id="year" name="year" title="-" data-style="btn-outline-secondary">
+            <option class="text-right" value="1955">1955</option>
+            <option class="text-right" value="1956">1956</option>
+            <option class="text-right" value="1957">1957</option>
+            <option class="text-right" value="1958">1958</option>
+            <option class="text-right" value="1959">1959</option>
+            <option class="text-right" value="1960">1960</option>
+            <option class="text-right" value="1961">1961</option>
+            <option class="text-right" value="1962">1962</option>
+            <option class="text-right" value="1963">1963</option>
+            <option class="text-right" value="1964">1964</option>
+            <option class="text-right" value="1965">1965</option>
+            <option class="text-right" value="1966">1966</option>
+            <option class="text-right" value="1967">1967</option>
+            <option class="text-right" value="1968">1968</option>
+            <option class="text-right" value="1969">1969</option>
+            <option class="text-right" value="1970">1970</option>
+            <option class="text-right" value="1971">1971</option>
+            <option class="text-right" value="1972">1972</option>
+            <option class="text-right" value="1973">1973</option>
+            <option class="text-right" value="1974">1974</option>
+            <option class="text-right" value="1975">1975</option>
+            <option class="text-right" value="1976">1976</option>
+            <option class="text-right" value="1977">1977</option>
+            <option class="text-right" value="1978">1978</option>
+            <option class="text-right" value="1979">1979</option>
+            <option class="text-right" value="1980">1980</option>
+            <option class="text-right" value="1981">1981</option>
+            <option class="text-right" value="1982">1982</option>
+            <option class="text-right" value="1983">1983</option>
+            <option class="text-right" value="1984">1984</option>
+            <option class="text-right" value="1985">1985</option>
+            <option class="text-right" value="1986">1986</option>
+            <option class="text-right" value="1987">1987</option>
+            <option class="text-right" value="1988">1988</option>
+            <option class="text-right" value="1989">1989</option>
+            <option class="text-right" value="1990">1990</option>
+            <option class="text-right" value="1991">1991</option>
+            <option class="text-right" value="1992">1992</option>
+            <option class="text-right" value="1993">1993</option>
+            <option class="text-right" value="1994">1994</option>
+            <option class="text-right" value="1995">1995</option>
+            <option class="text-right" value="1996">1996</option>
+            <option class="text-right" value="1997">1997</option>
+            <option class="text-right" value="1998">1998</option>
+            <option class="text-right" value="1999">1999</option>
+            <option class="text-right" value="2001">2001</option>
+            <option class="text-right" value="2002">2002</option>
+        </select>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+<div th:fragment="addresspicker">
+    <div class=" form-group form-row">
+        <div class="col-6">
+            <label for="country">Paese</label>
+            <select class="selectpicker form-control col-12 " data-size="5" id="country" name="country" title="Paese" data-style="btn-outline-secondary">
+                <option selected value="Svizzera">Svizzera</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <label for="region">Cantone</label>
+            <select class="selectpicker form-control col-12" data-size="5" id="region" name="region" title="Cantone" data-style="btn-outline-secondary">
+                <option value="AG">AG</option>
+                <option value="AI">AI</option>
+                <option value="AR">AR</option>
+                <option value="BE">BE</option>
+                <option value="BL">BL</option>
+                <option value="BS">BS</option>
+                <option value="FR">FR</option>
+                <option value="GE">GE</option>
+                <option value="GL">GL</option>
+                <option value="GR">GR</option>
+                <option value="JU">JU</option>
+                <option value="LU">LU</option>
+                <option value="NE">NE</option>
+                <option value="NW">NW</option>
+                <option value="OW">OW</option>
+                <option value="SG">SG</option>
+                <option value="SH">SH</option>
+                <option value="SO">SO</option>
+                <option value="SZ">SZ</option>
+                <option value="TG">TG</option>
+                <option value="TI" selected>TI</option>
+                <option value="UR">UR</option>
+                <option value="VD">VD</option>
+                <option value="VS">VS</option>
+                <option value="ZG">ZG</option>
+                <option value="ZH">ZH</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group form-row">
+        <div class="col-6">
+            <label for="city">Città</label>
+            <input class="form-control" id="city" name="city" placeholder="Città"
+                   required>
+        </div>
+        <div class="col-6">
+            <label for="postcode">Codice postale</label>
+            <input class="form-control" id="postcode" name="postcode" placeholder="CAP"
+                   required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="address">Indirizzo</label>
+        <input class="form-control" id="address" name="address" placeholder="Indirizzo"
+               required>
+    </div>
+</div>
+
+
+<div class=" form-group" th:fragment="socialReason">
+    <label for="socialReason">Ragione sociale</label>
+    <select class="selectpicker form-control col-12" data-size="5" data-style="btn-outline-secondary" id="socialReason"
+            name="socialReason" title="Ragione sociale">
+        <option value="SA">SA</option>
+        <option value="SAGL">SAGL</option>
+        <option value="Impresa individiale">Impresa individiale</option>
+        <option value="Società in nome collettivo">Società in nome collettivo</option>
+        <option value="Altro">Altro</option>
+    </select>
+</div>
+
+<!--https://www.wecanjob.it/pagina9_elenco-professioni.html-->
+<div class=" form-group" th:fragment="sector">
+    <label for="sector">Settore professionale</label>
+    <select class="selectpicker form-control col-12" data-size="5" data-style="btn-outline-secondary" id="sector"
+            name="sector" title="Scegliere un settore" data-live-search="true">
+        <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+        <option value="Costruzioni">Costruzioni</option>
+        <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+        <option value="Finanza">Finanza</option>
+        <option value="Formazione">Formazione</option>
+        <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+        <option value="Industria e trasporti">Industria e trasporti</option>
+        <option value="Sanità">Sanità</option>
+        <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+        <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+    </select>
+</div>
+
