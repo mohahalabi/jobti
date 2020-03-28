@@ -51,28 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="row d-flex justify-content-center my-4">
-            <div class="col-md-6">
-                <div class="card my-2 p-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Azienda</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a th:href="@{/info/company}"class="btn btn-primary">Scopri di più</a>
-                        <a th:href="@{/register/company}" class="btn btn-primary">Registra ora</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card my-2 p-2">
-                    <div class="card-body">
-                        <h5 class="card-title">Privato</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a th:href="@{/info/private}"class="btn btn-primary">Scopri di più</a>
-                        <a th:href="@{/register/private}" class="btn btn-primary">Registra ora</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div th:replace="master::usertype"></div>
     </div>
 </main>
 <footer th:replace="master::footer"></footer>

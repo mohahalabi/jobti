@@ -76,7 +76,7 @@ public class MainController {
             model.addAttribute("company", new Company());
             return "registerCompany";
         }
-        return "registerDef";
+        return "home";
     }
 
     @PostMapping("/register/private")
@@ -118,7 +118,7 @@ public class MainController {
         }else if (type.equals("company")){
             return "infoCompany";
         }
-        return "/";
+        return "home";
     }
 
     @GetMapping(value = "/icons/fav/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)
