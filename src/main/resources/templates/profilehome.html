@@ -9,12 +9,12 @@
 <main role="main">
     <div class="row m-4">
             <div class="col-sm-3 bg-light">
-                <img alt="" class="rounded-0 py-3" th:src="@{/images/user-avatar-green.svg}" style="min-width: 100px">
+<!--                <img alt="" class="rounded-0 py-3" th:src="@{/images/user-avatar-green.svg}" style="min-width: 100px">-->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mio Profilo</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messsaggi</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Impostazioni</a>
+                    <a class="nav-link active col-12" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                    <a class="nav-link col-12" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mio Profilo</a>
+                    <a class="nav-link col-12" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messaggi</a>
+                    <a class="nav-link col-12" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Impostazioni</a>
                 </div>
             </div>
             <div class="col-sm-9">
@@ -23,13 +23,17 @@
                         <div th:replace="fragDashboard::dash"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <h2>OPS! Prova <a th:href="@{/profile/0}">qui</a>. </h2>
+                        <div>
+                            <div th:replace="profile::profile"></div>
+                        </div>
+
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <div th:replace="fragMessages::message"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <h2>OPS! Questa funzionalità non è ancora implementata.</h2>
+
                     </div>
                 </div>
             </div>

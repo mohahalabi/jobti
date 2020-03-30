@@ -10,22 +10,30 @@
     <div class="container my-5">
         <div class="row d-flex justify-content-center my-4">
             <div class="col-md-12">
-                <div class="card rounded-0 bg-transparent">
+                <div class="card rounded-circle-0 bg-transparent">
                     <div class="carousel slide" data-ride="carousel" id="carouselExampleControls">
                         <ol class="carousel-indicators">
                             <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
                             <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
                             <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+                            <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
+                            <li data-slide-to="3" data-target="#carouselExampleIndicators"></li>
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img alt="..." class="d-block w-100" th:src="@{/images/half-landing-image.png}">
+                                <img alt="..." class="d-block w-100" th:src="@{/images/barman.jpg}">
                             </div>
                             <div class="carousel-item">
-                                <img alt="..." class="d-block w-100" th:src="@{/images/half-landing-image.png}">
+                                <img alt="..." class="d-block w-100" th:src="@{/images/carpenter.jpg}">
                             </div>
                             <div class="carousel-item">
-                                <img alt="..." class="d-block w-100" th:src="@{/images/half-landing-image.png}">
+                                <img alt="..." class="d-block w-100" th:src="@{/images/pc.jpg}">
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="..." class="d-block w-100" th:src="@{/images/laboratory.jpg}">
+                            </div>
+                            <div class="carousel-item">
+                                <img alt="..." class="d-block w-100" th:src="@{/images/sawman.jpg}">
                             </div>
                         </div>
                         <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleControls"
@@ -40,7 +48,7 @@
                         </a>
                     </div>
 
-                    <div class="jumbotron rounded-0 my-0 p-4">
+                    <div class="jumbotron rounded-circle-0 my-0 p-4">
                         <h1 class="display-4">JobTI è una piattaforma...</h1>
                         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
                             attention to featured content or information.</p>
@@ -52,6 +60,54 @@
             </div>
         </div>
         <div th:replace="master::usertype"></div>
+        <div class="row justify-content-center">
+            <p class="col-12 text-center">Aziende presenti sulla nostra piattaforma</p>
+            <div id="carouselExampleIndicators" class="carousel mx-3" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100  border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/1.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/2.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/3.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/4.png}" style="max-width: 100px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/5.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img  alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                      th:src="@{/images/companies/6.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/7.png}" style="max-width: 100px">
+                            </div>
+                            <div class="col-3">
+                                <img alt="..." class="d-block w-100 border border-secondary rounded-circle"
+                                     th:src="@{/images/companies/8.png}" style="max-width: 100px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </main>
 <footer th:replace="master::footer"></footer>

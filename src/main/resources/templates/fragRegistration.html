@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="emailpass" class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" id="email" name="email" placeholder="Email"
-           required>
-</div >
-<div class="form-group">
-    <label for="password">Password</label>
-    <input class="form-control" id="password" name="password" placeholder="Password"
-           required type="password">
+<div th:fragment="emailpass">
+    <div  class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control field" id="email" name="email" placeholder="Email"
+               required>
+    </div >
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control field" id="password" name="password" placeholder="Password"
+               required type="password">
+    </div>
 </div>
 
 <div class="form-row" th:fragment="datepicker">
-    <div class="col-4">
+    <div id="dayfield" class="col-4">
         <label for="day">Giorno</label>
-        <select class="selectpicker form-control col-12 " data-size="5" id="day" name="day" title="-" data-style="btn-outline-secondary">
+        <select class="selectpicker form-control col-12 field" data-size="5" id="day" name="day" title="-" data-style="btn-outline-secondary">
             <option class="text-right" value="1">1</option>
             <option class="text-right" value="2">2</option>
             <option class="text-right" value="3">3</option>
@@ -49,9 +51,9 @@
             <option class="text-right" value="31">31</option>
         </select>
     </div>
-    <div class="col-4">
+    <div id="monthfield" class="col-4">
         <label for="month">Mese</label>
-        <select class="selectpicker form-control col-12" data-size="5" id="month" name="month" title="-" data-style="btn-outline-secondary">
+        <select class="selectpicker form-control col-12 field" data-size="5" id="month" name="month" title="-" data-style="btn-outline-secondary">
             <option  value="1">Gennaio</option>
             <option  value="2">Febbraio</option>
             <option  value="3">Marzo</option>
@@ -66,9 +68,9 @@
             <option  value="12">Dicembre</option>
         </select>
     </div>
-    <div class="col-4">
+    <div id="yearfield" class="col-4">
         <label for="year">Anno</label>
-        <select class="selectpicker form-control col-12 " data-size="5" id="year" name="year" title="-" data-style="btn-outline-secondary">
+        <select class="selectpicker form-control col-12 field" data-size="5" id="year" name="year" title="-" data-style="btn-outline-secondary">
             <option class="text-right" value="1955">1955</option>
             <option class="text-right" value="1956">1956</option>
             <option class="text-right" value="1957">1957</option>
@@ -123,15 +125,15 @@
 
 <div th:fragment="addresspicker">
     <div class=" form-group form-row">
-        <div class="col-6">
+        <div id="countryfield" class="col-6">
             <label for="country">Paese</label>
-            <select class="selectpicker form-control col-12 " data-size="5" id="country" name="country" title="Paese" data-style="btn-outline-secondary">
+            <select class="selectpicker form-control col-12 field" data-size="5" id="country" name="country" title="Paese" data-style="btn-outline-secondary">
                 <option selected value="Svizzera">Svizzera</option>
             </select>
         </div>
-        <div class="col-6">
+        <div id="regionfield" class="col-6">
             <label for="region">Cantone</label>
-            <select class="selectpicker form-control col-12" data-size="5" id="region" name="region" title="Cantone" data-style="btn-outline-secondary">
+            <select class="selectpicker form-control col-12 field" data-size="5" id="region" name="region" title="Cantone" data-style="btn-outline-secondary">
                 <option value="AG">AG</option>
                 <option value="AI">AI</option>
                 <option value="AR">AR</option>
@@ -164,26 +166,26 @@
     <div class="form-group form-row">
         <div class="col-6">
             <label for="city">Città</label>
-            <input class="form-control" id="city" name="city" placeholder="Città"
+            <input class="form-control field" id="city" name="city" placeholder="Città"
                    required>
         </div>
         <div class="col-6">
             <label for="postcode">Codice postale</label>
-            <input class="form-control" id="postcode" name="postcode" placeholder="CAP"
+            <input class="form-control field" id="postcode" name="postcode" placeholder="CAP"
                    required>
         </div>
     </div>
     <div class="form-group">
         <label for="address">Indirizzo</label>
-        <input class="form-control" id="address" name="address" placeholder="Indirizzo"
+        <input class="form-control field" id="address" name="address" placeholder="Indirizzo"
                required>
     </div>
 </div>
 
 
-<div class=" form-group" th:fragment="socialReason">
+<div id="socialReasonfield" class=" form-group" th:fragment="socialReason">
     <label for="socialReason">Ragione sociale</label>
-    <select class="selectpicker form-control col-12" data-size="5" data-style="btn-outline-secondary" id="socialReason"
+    <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="socialReason"
             name="socialReason" title="Ragione sociale">
         <option value="SA">SA</option>
         <option value="SAGL">SAGL</option>
@@ -194,9 +196,9 @@
 </div>
 
 <!--https://www.wecanjob.it/pagina9_elenco-professioni.html-->
-<div class=" form-group" th:fragment="sector">
+<div id="sectorfield" class=" form-group" th:fragment="sector">
     <label for="sector">Settore professionale</label>
-    <select class="selectpicker form-control col-12" data-size="5" data-style="btn-outline-secondary" id="sector"
+    <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector"
             name="sector" title="Scegliere un settore" data-live-search="true">
         <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
         <option value="Costruzioni">Costruzioni</option>

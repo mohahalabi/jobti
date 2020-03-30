@@ -1,72 +1,215 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
+var caller = document.currentScript.getAttribute('user');
 
-function showTab(n) {
+function isEmpty(field) {
+    var valid = true;
+    if (document.getElementById(field).value === "") {
+        valid = false;
+        document.getElementById(field).classList.remove("green-border");
+        document.getElementById(field).classList.add("red-border");
+    } else {
+        document.getElementById(field).classList.remove("red-border");
+        document.getElementById(field).classList.add("green-border");
+    }
+    return valid;
+}
+
+function isSelected(field) {
+    var valid = true;
+    var z = document.getElementById(field);
+    //Sorryy :( @Generale
+    var b = document.getElementById(field + "field").children[1].children[1];
+    var text = z.options[z.selectedIndex].text;
+    if (text === "") {
+        valid = false;
+        b.classList.remove("btn-outline-secondary");
+        b.classList.remove("green-border");
+        b.classList.add("red-border");
+    } else {
+        b.classList.remove("red-border");
+        b.classList.add("green-border");
+    }
+    return valid;
+}
+
+function search() {
+    var context = document.querySelector('base').getAttribute('href');
+    var url = context + "verifyemail?q=" + document.querySelector('#email').value;
+    var options = {method: "GET"};
+    var x = fetch(url, options)
+        .then(function (response) {
+            response.json();
+        })
+        .then(function (present) {
+            return present;
+        });
+    return x;
+}
+
+function showTab() {
     // This function will display the specified tab of the form...
     var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
+    x[currentTab].style.display = "block";
     //... and fix the Previous/Next buttons:
-    if (n == 0) {
+    if (currentTab === 0) {
         document.getElementById("prevBtn").style.display = "none";
     } else {
         document.getElementById("prevBtn").style.display = "inline";
     }
-    if (n == (x.length - 1)) {
+    if (currentTab === (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Conferma";
     } else {
         document.getElementById("nextBtn").innerHTML = "Avanti";
     }
     //... and run a function that will display the correct step indicator:
-    fixStepIndicator(n)
+    fixStepIndicator(currentTab)
+}
+
+function validateEmailPass() {
+    var valid = true;
+    valid = isEmpty("email") && valid;
+    valid = isEmpty("password") && valid;
+    var email = document.getElementById(field).value;
+    valid =(/^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/g).test(email) && valid;
+    return valid;
+}
+
+function validateNameSocial() {
+    var valid = true;
+    valid = isEmpty("name") && valid;
+    valid = isSelected("socialReason") && valid;
+
+    return valid;
+}
+
+function validateNameSurSector() {
+    var valid = true;
+    valid = isEmpty("name") && valid;
+    valid = isEmpty("surname") && valid;
+    valid = isSelected("sector") && valid;
+
+    return valid;
+}
+
+function validateSiteSector() {
+    var valid = true;
+    valid = isEmpty("site") && valid;
+    valid = isSelected("sector") && valid;
+
+    return valid;
+}
+
+function validateaddress() {
+    var valid = true;
+    valid = isSelected("country") && valid;
+    valid = isSelected("region") && valid;
+    valid = isEmpty("city") && valid;
+    valid = validate4digitInteger("postcode") && valid;
+    valid = isEmpty("address") && valid;
+
+    return valid;
+}
+
+function validateDate() {
+    var valid = true;
+    valid = isSelected("day") && valid;
+    valid = isSelected("month") && valid;
+    valid = isSelected("year") && valid;
+
+    return valid
+}
+
+function validate4digitInteger(field) {
+    var valid = true;
+    var l = document.getElementById(field);
+    if (l.value === "" || isNaN(parseInt(l.value)) || l.value.length !== 4) {
+        valid = false;
+        l.classList.remove("green-border");
+        l.classList.add("red-border");
+    } else {
+        l.classList.remove("red-border");
+        l.classList.add("green-border");
+    }
+    return valid;
+}
+
+function validatePrivateForm() {
+    var valid = true;
+    switch (currentTab) {
+        case 0:
+            valid = valid && validateEmailPass();
+            break;
+        case 1:
+            valid = valid && validateNameSurSector();
+            break;
+        case 2:
+            valid = valid && validateaddress();
+            break;
+        case 3:
+            valid = valid && validateDate();
+            break;
+    }
+    return valid;
+}
+
+function validateCompanyForm() {
+    var valid = true;
+    switch (currentTab) {
+        case 0:
+            valid = valid && validateEmailPass();
+            break;
+        case 1:
+            valid = valid && validateNameSocial();
+            break;
+        case 2:
+            valid = valid && validateSiteSector();
+            break;
+        case 3:
+            valid = valid && validateaddress();
+            break;
+        case 4:
+            valid = valid && validate4digitInteger("year");
+            break;
+    }
+    return valid;
 }
 
 function nextPrev(n) {
-    // This function will figure out which tab to display
+    //validation
+    var valid = true;
+    if (n>0){
+        if (caller === "private")
+            valid = validatePrivateForm() && valid;
+        else if (caller === "company")
+            valid = validateCompanyForm() && valid;
+        if (!valid) return false;
+
+        //if valid
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+    }
     var x = document.getElementsByClassName("tab");
-    // Exit the function if any field in the current tab is invalid:
-    if (n == 1 && !validateForm()) return false;
-    // Hide the current tab:
     x[currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
+
     currentTab = currentTab + n;
-    // if you have reached the end of the form...
-    if (currentTab >= x.length) {
+
+    if (n>1 && currentTab >= x.length) {
         // ... the form gets submitted:
         document.getElementById("regForm").submit();
         return false;
     }
-    // Otherwise, display the correct tab:
-    showTab(currentTab);
-}
 
-function validateForm() {
-    // This function deals with validation of the form fields
-    var x, y, i, valid = true;
-    x = document.getElementsByClassName("tab");
-    y = x[currentTab].getElementsByTagName("input");
-    // A loop that checks every input field in the current tab:
-    for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-            // add an "invalid" class to the field:
-            y[i].className += " invalid";
-            // and set the current valid status to false
-            valid = false;
-        }
-    }
-    // If the valid status is true, mark the step as finished and valid:
-    if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
-    }
-    return valid; // return the valid status
+    showTab();
 }
 
 function fixStepIndicator(n) {
     // This function removes the "active" class of all steps...
-    var i, x = document.getElementsByClassName("step");
-    for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
+    var c = document.getElementsByClassName("step");
+    for (let j = 0; j < c.length; j++) {
+        c[j].classList.remove("active");
     }
     //... and adds the "active" class on the current step:
-    x[n].className += " active";
+    c[n].className += " active";
 }

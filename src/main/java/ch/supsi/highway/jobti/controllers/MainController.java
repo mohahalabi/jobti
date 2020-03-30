@@ -5,6 +5,7 @@ import ch.supsi.highway.jobti.model.Private;
 import ch.supsi.highway.jobti.service.CompanyService;
 import ch.supsi.highway.jobti.service.PrivateService;
 import ch.supsi.highway.jobti.service.RoleService;
+import ch.supsi.highway.jobti.service.UserService;
 import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,6 +26,9 @@ public class MainController {
 
     @Autowired
     private CompanyService companyService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private RoleService roleService;
@@ -87,7 +91,8 @@ public class MainController {
         p.setBirthdate(getDate(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day)));
         p.setRole(roleService.findById("ROLE_PRIVATE"));
         p.setCredits(10);
-        privateService.save(p);
+        if(privateService.findById(p.getEmail())==null)
+            privateService.save(p);
         return "redirect:/login";
     }
 
@@ -99,6 +104,13 @@ public class MainController {
         c.setRole(roleService.findById("ROLE_COMPANY"));
         companyService.save(c);
         return "redirect:/login";
+    }
+
+    @GetMapping(value="/verifyemail")
+    @ResponseBody
+    public Boolean searchInItem(@RequestParam String q) {
+
+        return userService.isEmailPresent(q);
     }
 
     @GetMapping(value="/profile/{id}")

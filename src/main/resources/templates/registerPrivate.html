@@ -15,26 +15,26 @@
                         <h1 class="display-4">Registrazione</h1>
                     </div>
                     <form method="post" th:object="${private}" id="regForm" th:action="@{/register/private}">
-                        <div class="tab">
+                        <div id="tab0" class="tab">
                             <div th:replace="fragRegistration::emailpass"></div>
                         </div>
-                        <div class="tab">
+                        <div id="tab1" class="tab">
                             <div class="form-group">
                                 <label for="name">Nome</label>
-                                <input class="form-control" id="name" name="name" placeholder="Nome"
+                                <input class="form-control field" id="name" name="name" placeholder="Nome"
                                        required>
                             </div>
                             <div class="form-group">
                                 <label for="surname">Cognome</label>
-                                <input  class="form-control" id="surname" name="surname" placeholder="Cognome"
+                                <input  class="form-control field" id="surname" name="surname" placeholder="Cognome"
                                        required>
                             </div>
                             <div th:replace="fragRegistration::sector"></div>
                         </div>
-                        <div class="tab">
+                        <div id="tab2" class="tab">
                             <div th:replace="fragRegistration::addresspicker"></div>
                         </div>
-                        <div class="tab">
+                        <div id="tab3" class="tab">
                             <div class="form-group">
                                 <label>Data di nascita</label>
                                 <div th:replace="fragRegistration::datepicker"></div>
@@ -61,6 +61,6 @@
 </div>
 
 <footer th:replace="master::footer"></footer>
-<script type="text/javascript" th:src="@{/js/regForm.js}"></script>
+<script type="text/javascript" th:src="@{/js/regForm.js}" user="private"></script>
 </body>
 </html>

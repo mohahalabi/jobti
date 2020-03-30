@@ -26,6 +26,19 @@ input.invalid {
     display: none;
 }
 
+.red-border{
+    border: 2px solid red !important;
+    background-color: rgb(249, 183, 183) !important;
+    box-shadow: 0 0 0 0.2rem rgba(249, 183, 183,0.25) !important;
+}
+
+.green-border {
+    border: 2px solid green !important;
+    background-color: rgb(183, 249, 184) !important;
+    box-shadow: 0 0 0 0.2rem rgba(183, 249, 184,0.25) !important;
+}
+
+
 /* Make circles that indicate the steps of the form: */
 .step {
     height: 15px;

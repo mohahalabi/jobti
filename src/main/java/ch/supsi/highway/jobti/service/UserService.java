@@ -29,4 +29,11 @@ public class UserService {
         userRepository.delete(user);
     }
 
+    public boolean isEmailPresent(String email){
+        if(findById(email)==null)
+            return false;
+        else
+            return true;
+    }
+
 }

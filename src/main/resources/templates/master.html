@@ -47,7 +47,7 @@
                 <a class="nav-item btn btn-outline-dark" th:href="@{/login}">Login</a>
             </div>
             <div class="navbar-nav" sec:authorize="isAuthenticated()">
-                <a class="nav-item mx-lg-4 mx-md-4 my-sm-3 my-md-0 my-lg-0" th:href="@{/profilehome}">
+                <a class="nav-item mx-lg-4 mx-md-4 my-3 my-md-0" th:href="@{/profilehome}">
                     <img th:src="@{images/user.svg}" style="width: 40px">
                 </a>
                 <a class="nav-item btn btn-outline-dark" th:href="@{/logout}">Logout</a>
