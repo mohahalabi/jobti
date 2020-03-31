@@ -3,7 +3,7 @@
 
 
 <div class="card-deck" th:fragment="dash">
-    <div class="card my-2" style="min-width: 280px">
+    <div  th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_COMPANY'')')}" class="card my-2" style="min-width: 280px">
         <div class="card-body">
             <div class="row text-center justify-content-center">
                 <div class="col-md-4 px-0 mx-2" style="max-width: 100px;min-width: 80px">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer text-right">
+        <div class="card-footer text-center">
             <a class="btn btn-primary" th:href="@{/search}">Trova!</a>
         </div>
     </div>
@@ -30,13 +30,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="card-footer text-right">
-            <a class="btn btn-primary" th:href="@{#}">Completa!</a>
+        <div class="card-footer text-center">
+            <a class="btn btn-primary" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+               aria-controls="v-pills-settings" aria-selected="false">Completa!</a>
         </div>
     </div>
-    <div class="card my-2" style="min-width: 280px">
+    <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" class="card my-2" style="min-width: 280px">
         <div class="card-body">
             <div class="row text-center justify-content-center">
                 <div class="col-md-4 px-0 mx-2" style="max-width: 100px;min-width: 80px">
@@ -48,11 +48,11 @@
                 </div>
             </div>
         </div>
-        <div class="card-footer text-right">
+        <div class="card-footer text-center">
             <a class="btn btn-primary" th:href="@{#}">Compra!</a>
         </div>
     </div>
-    <div class="card my-2" style="min-width: 280px">
+    <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" class="card my-2" style="min-width: 280px">
         <div class="card-body">
             <div class="row text-center justify-content-center">
                 <div class="col-md-4 px-0 mx-2" style="max-width: 100px;min-width: 80px">

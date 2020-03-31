@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-row" th:fragment="datepicker">
-    <div id="dayfield" class="col-4">
+    <div th:fragment="day" id="dayfield" class="col-md-4">
         <label for="day">Giorno</label>
         <select class="selectpicker form-control col-12 field" data-size="5" id="day" name="day" title="-" data-style="btn-outline-secondary">
             <option class="text-right" value="1">1</option>
@@ -51,9 +51,9 @@
             <option class="text-right" value="31">31</option>
         </select>
     </div>
-    <div id="monthfield" class="col-4">
-        <label for="month">Mese</label>
-        <select class="selectpicker form-control col-12 field" data-size="5" id="month" name="month" title="-" data-style="btn-outline-secondary">
+    <div  th:fragment="month(id)" id="monthfield" class="col-md-4">
+        <label th:for="${id}" for="month">Mese</label>
+        <select class="selectpicker form-control col-12 field" data-size="5" th:id="${id}" id="month" name="month" title="-" data-style="btn-outline-secondary">
             <option  value="1">Gennaio</option>
             <option  value="2">Febbraio</option>
             <option  value="3">Marzo</option>
@@ -68,9 +68,9 @@
             <option  value="12">Dicembre</option>
         </select>
     </div>
-    <div id="yearfield" class="col-4">
-        <label for="year">Anno</label>
-        <select class="selectpicker form-control col-12 field" data-size="5" id="year" name="year" title="-" data-style="btn-outline-secondary">
+    <div  th:fragment="year(id)" th:id="yearfield" class="col-md-4">
+        <label th:for="${id}" for="year">Anno</label>
+        <select class="selectpicker form-control col-12 field" data-size="5" th:id="${id}" id="year" name="year" title="-" data-style="btn-outline-secondary">
             <option class="text-right" value="1955">1955</option>
             <option class="text-right" value="1956">1956</option>
             <option class="text-right" value="1957">1957</option>

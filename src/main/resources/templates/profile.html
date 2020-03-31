@@ -5,7 +5,10 @@
     <div class="card bg-light p-2">
         <div class="row no-gutters align-items-center">
             <div class="col-md-3" style="background: #868e96;">
-                <img class="card-img-top h-100" th:src="@{images/user-avatar.svg}">
+                <img  th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}"
+                      class="card-img-top h-100" th:src="@{images/user-avatar.svg}">
+                <img  th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}"
+                      class="card-img-top h-100" th:src="@{images/company-avatar.svg}">
             </div>
             <div class="col-md-9">
                 <div class="card-body text-center">

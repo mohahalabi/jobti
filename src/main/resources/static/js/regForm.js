@@ -33,6 +33,24 @@ function isSelected(field) {
     return valid;
 }
 
+function isSelectedByName(field) {
+    var valid = true;
+    var z = document.getElementsByName(field)
+    //Sorryy :( @Generale
+    var b = document.getElementById(field + "field").children[1].children[1];
+    var text = z[0].options[z[0].selectedIndex].text;
+    if (text === "") {
+        valid = false;
+        b.classList.remove("btn-outline-secondary");
+        b.classList.remove("green-border");
+        b.classList.add("red-border");
+    } else {
+        b.classList.remove("red-border");
+        b.classList.add("green-border");
+    }
+    return valid;
+}
+
 function search() {
     var context = document.querySelector('base').getAttribute('href');
     var url = context + "verifyemail?q=" + document.querySelector('#email').value;
@@ -70,8 +88,15 @@ function validateEmailPass() {
     var valid = true;
     valid = isEmpty("email") && valid;
     valid = isEmpty("password") && valid;
-    var email = document.getElementById(field).value;
+    var email = document.getElementById("email").value;
     valid =(/^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/g).test(email) && valid;
+    if (!valid) {
+        document.getElementById("email").classList.remove("green-border");
+        document.getElementById("email").classList.add("red-border");
+    } else {
+        document.getElementById("email").classList.remove("red-border");
+        document.getElementById("email").classList.add("green-border");
+    }
     return valid;
 }
 
@@ -114,8 +139,8 @@ function validateaddress() {
 function validateDate() {
     var valid = true;
     valid = isSelected("day") && valid;
-    valid = isSelected("month") && valid;
-    valid = isSelected("year") && valid;
+    valid = isSelectedByName("month") && valid;
+    valid = isSelectedByName("year") && valid;
 
     return valid
 }
@@ -195,7 +220,7 @@ function nextPrev(n) {
 
     currentTab = currentTab + n;
 
-    if (n>1 && currentTab >= x.length) {
+    if (n>0 && currentTab >= x.length) {
         // ... the form gets submitted:
         document.getElementById("regForm").submit();
         return false;

@@ -64,7 +64,9 @@ public class MainController {
     }
 
     @GetMapping("/profilehome")
-    public String profHome() {
+    public String profHome(Model model) {
+        model.addAttribute("private", new Private());
+        model.addAttribute("company", new Company());
         return "profilehome";
     }
 
@@ -109,7 +111,6 @@ public class MainController {
     @GetMapping(value="/verifyemail")
     @ResponseBody
     public Boolean searchInItem(@RequestParam String q) {
-
         return userService.isEmailPresent(q);
     }
 

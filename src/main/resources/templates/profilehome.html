@@ -14,7 +14,7 @@
                     <a class="nav-link active col-12" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                     <a class="nav-link col-12" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mio Profilo</a>
                     <a class="nav-link col-12" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messaggi</a>
-                    <a class="nav-link col-12" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Impostazioni</a>
+                    <a class="nav-link col-12" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Modifica</a>
                 </div>
             </div>
             <div class="col-sm-9">
@@ -32,13 +32,13 @@
                         <div th:replace="fragMessages::message"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <h2>OPS! Questa funzionalità non è ancora implementata.</h2>
-
+                        <div th:replace="fragEdit::edit"></div>
                     </div>
                 </div>
             </div>
         </div>
 </main>
 <footer th:replace="master::footer"></footer>
+<script type="text/javascript" th:src="@{/js/editForm.js}"></script>
 </body>
 </html>

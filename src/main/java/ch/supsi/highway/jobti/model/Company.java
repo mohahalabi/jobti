@@ -28,6 +28,26 @@ public class Company extends User {
         this.site= site;
     }
 
+    public Company(String name, String email, String password, Role role, String address, int postcode, String city,
+                   String region, String country, Date birthdate, String sector, int phoneNum, String socialReason,
+                   String site, int employeeNum, int rcNum) {
+        super(name, email, password, role, address, postcode, city, region, country, birthdate, sector);
+        this.phoneNum = phoneNum;
+        this.socialReason = socialReason;
+        this.site = site;
+        this.employeeNum = employeeNum;
+        this.rcNum = rcNum;
+    }
+
+    public Company(String name, String email, String password, Role role, String address, int postcode, String city, String region, String country, String description, Date birthdate, byte[] image, int phoneNum, String socialReason, String site, int employeeNum, int rcNum) {
+        super(name, email, password, role, address, postcode, city, region, country, description, birthdate, image);
+        this.phoneNum = phoneNum;
+        this.socialReason = socialReason;
+        this.site = site;
+        this.employeeNum = employeeNum;
+        this.rcNum = rcNum;
+    }
+
     public int getPhoneNum() {
         return phoneNum;
     }

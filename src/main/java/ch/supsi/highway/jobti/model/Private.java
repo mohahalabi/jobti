@@ -2,7 +2,9 @@ package ch.supsi.highway.jobti.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("private")
@@ -12,6 +14,9 @@ public class Private extends User{
     private int credits;
     private int views;
 
+    @OneToMany
+    private List<WorkingExperience> experiences;
+
     public Private() {
     }
 
@@ -20,6 +25,7 @@ public class Private extends User{
         this.surname=surname;
         this.credits=10;
         this.views=0;
+        this.experiences=new ArrayList<>();
     }
 
     public Private(String name, String surname, String email, String password, String country, String region,
@@ -29,7 +35,18 @@ public class Private extends User{
         this.surname=surname;
         this.credits=10;
         this.views=0;
+        this.experiences= new ArrayList<>();
     }
+
+    public Private(String name, String surname, String email, String password, Role role, String address, int postcode,
+                   String city, String region, String country, Date birthdate, String sector, List exp) {
+        super(name, email, password, role, address, postcode, city, region, country, birthdate, sector );
+        this.surname=surname;
+        this.credits=10;
+        this.views=0;
+        this.experiences= exp;
+    }
+
 
     public String getSurname() {
         return surname;
@@ -37,6 +54,14 @@ public class Private extends User{
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public List<WorkingExperience> getExperiences() {
+        return experiences;
+    }
+
+    public void setExperiences(List<WorkingExperience> experiences) {
+        this.experiences = experiences;
     }
 
     public int getCredits() {
