@@ -1,31 +1,119 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="master::head('JobTI')"></head>
-<body>
+<head th:replace="master::head('JobTI per le aziende')"></head>
+
+<body class="bg-light">
 
 <header th:replace="master::header"></header>
 
-<main role="main">
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Azienda</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Ecco cosa offre JobTi per le aziende</h6>
-                        <p class="card-text text-justify">
-                            Testo!
-                        </p>
-                        <a th:href="@{/register/company}" class="btn btn-primary">Registra ora</a>
-<!--                        <a class="card-link" href="#">Card link</a>-->
-<!--                        <a class="card-link" href="#">Another link</a>-->
-                    </div>
+
+<div class="position-relative overflow-hidden p-md-3 m-md-0 text-center bg-white">
+    <div class="col-md-8 p-lg-2 mx-auto my-4">
+        <h1 class="display-4 text-info font-weight-normal mb-5">Ecco cosa offre JobTi per le aziende</h1>
+        <p class="lead font-weight-normal my-4">Permettiamo alle aziende di poter cercare il candidato che più fa al caso
+            loro. JobTi fa si che ci siano una moltitudine di profili personalizzati (candidati
+            potenziali) i quali fungono da base su cui poi le aziende possano filtrare la persona più adatta.</p>
+    </div>
+</div>
+
+<main class="container-fluid my-5" role="main">
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-7">
+            <div class="bg-info rounded mr-md-3 px-3 pt-md-4 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Filtra il tuo candidato ideale</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Trova i candidati che soddisfino le credenziali, tramite l’utilizzo di
+                        filtri che ottimizzano e restringono la tua ricerca</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-8">
+            <div class="bg-success rounded mr-md-3 px-3 pt-md-4 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Mostra a tutti chi sei</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Crea un profilo aziendale che permetta ai tuoi potenziali candidati di
+                        poter capire il perché la tua azienda fa al caso loro, rispettando i tuoi ideali e valori.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-9">
+            <div class="bg-secondary rounded mr-md-3 px-3 pt-md-4 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Riduci i tempi di assunzione</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Grazie a profili chiari e reali dei potenziali candidati, sarà più facile
+                        trovare la persona ideale per l’azienda in breve tempo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row text-center my-5 p-2">
+
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center my-5 p-2">
+            <div class="col-md-8">
+                <p class="display-4">Il nostro filtro aiuta a trovare il canditato migliore in base alle esigenze delle aziende.</p>
+            </div>
+            <div class="col-md-4">
+                <img class="bd-placeholder-img bg-white p-2 rounded" th:src="@{/images/filtro-ricerca.jpg}"
+                     width="320" height="360">
+            </div>
+        </div>
+
+        <div class="row text-center my-5 p-2">
+
+        </div>
+
+        <div class="row text-center my-5 p-2">
+            <div class="col">
+                <h5 class="display-4">Aziende che si fidano di noi</h5>
+            </div>
+        </div>
+
+        <div class="row text-center my-5 p-2">
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-3 rounded-circle" th:src="@{/images/companies/1.png}"
+                     width="180" height="180">
+            </div>
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-3 rounded-circle" th:src="@{/images/companies/3.png}"
+                     width="180" height="180">
+            </div>
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-3 rounded-circle" th:src="@{/images/companies/4.png}"
+                     width="180" height="180">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center mb-5">
+        <div class="col">
+            <a th:href="@{/register/company}" class="btn btn-lg btn-outline-primary my-5">Registra ora</a>
+        </div>
+    </div>
+
 </main>
+
 <footer th:replace="master::footer"></footer>
 </body>
 </html>
