@@ -2,38 +2,125 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="master::head('JobTI')"></head>
-<body>
+
+<body class="bg-light">
 
 <header th:replace="master::header"></header>
 
-<main role="main">
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Privato</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Ecco cosa offre JobTi per i privati</h6>
-                        <p class="card-text text-justify">
-                            La piattaforma JobTI è stata ideata con lo scopo di mettere in evidenza i pregi dei candidati che si iscrivono alla piattaforma, in modo tale da essere chiari e facilmente individuabili dalle società che necessitano di personale specializzato.
-                            Per fare ciò ci affidiamo a test psicologici pensati per risaltare particolarità personali di ogni singolo lavoratore che cerca di andare nel mondo del lavoro, in questo modo oltre all’esperienza lavorativa e quella formativa il vantaggio competitivo viene dato dalla personalità, la quale può essere vista come punto differenziate fra curriculum simili.
-                            Oltre a questo nel profilo di ogni candidato verrà posta una guida sulla redazione di un breve video di presentazione, il quale verrà messo a diretta disposizione per le imprese interessate.
-                            Considerando il livello di spontaneità che ne scaturisce, sommato ai consigli dati dal nostro team di esperti, questo può diventare uno strumento forte per incentivare il datore di lavoro a svolgere un primo colloquio di lavoro e chissà forse in futuro portare ad un assunzione.
-                            Importante
-                            Per motivi di privacy e per permettere una più efficiente ed efficace allocazione del personale in cerca di lavoro, tutti i dati dei singoli iscritti sono trasferiti alle società solo dal momento in cui queste provano essere realmente interessate al profilo e lo hanno preso in considerazione per una potenziale futura assunzione.
-                            Per poter sviluppare un sistema che permetta di raggiungere i livelli di privacy, efficacia ed efficienza citati in precedenza abbiamo messo appunto una struttura a crediti, la quale presuppone che ogni account privato abbia a disposizione gratuitamente (dal momento in cui un soggetto si iscrive) 10 crediti, questi vengono scalati nel momento un impresa presenta un reale interesse verso il profilo (ossia decide di inserire il candidato nelle top 5 candidature al posto di lavoro), presentando quindi alte probabilità per la persona di essere poi assunta.
-                            Per poter mantenere il profilo visibile alle imprese è necessario avere un saldo di crediti maggiore di zero, per fare ciò si può acquisire il credito direttamente sulla nostra piattaforma oppure invitare amici e conoscenti ad iscriversi sulla piattaforma, una volta che i profili degli invitati sono attivi, vengono accreditati altri 10 crediti direttamente sul vostro profilo.
-                            Questa offerta è stata pensata sia per persone disoccupate in cerca di lavoro sia per coloro che hanno già un occupazione ma cercano nuove esperienze lavorative, ma voglio mantenere un certo livello di segretezza, per evitare di informare il corrente datore di lavoro sulla ricerca.
-                        </p>
-                        <a th:href="@{/register/private}" class="btn btn-primary">Registra ora</a>
-<!--                        <a class="card-link" href="#">Card link</a>-->
-<!--                        <a class="card-link" href="#">Another link</a>-->
-                    </div>
+
+<div class="position-relative overflow-hidden p-md-3 m-md-0 text-center bg-light">
+    <div class="col-md-8 p-lg-4 mx-auto my-4">
+        <h1 class="display-4 text-info font-weight-normal">Ecco cosa offre JobTi per i privati</h1>
+        <p class="lead font-weight-normal mt-4">Mettiamo in evidenza i pregi dei candidati che si iscrivono alla
+            piattaforma, in modo tale da essere chiari e facilmente individuabili dalle società che necessitano di
+            personale</p>
+    </div>
+</div>
+
+<main class="container-fluid m-md-0" role="main">
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-7">
+            <div class="bg-info rounded mr-md-3 pt-2 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Particolarità personali di ogni singolo lavoratore</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Per fare ciò ci affidiamo a test psicologici, oltre all’esperienza
+                        lavorativa e quella formativa il vantaggio competitivo viene dato dalla personalità</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-8">
+            <div class="bg-success rounded mr-md-3 pt-2 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Struttura a crediti</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Ogni account privato abbia a disposizione gratuitamente 10 crediti.Invita
+                        amici e conoscenti ad iscriversi sulla piattaforma per acquisire più crediti.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-9">
+            <div class="bg-secondary rounded mr-md-3 pt-2 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Ci teniamo alla tua privacy</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Tutti i dati dei singoli iscritti sono trasferiti alle società solo dal
+                        momento in cui queste provano essere realmente interessate al profilo e lo hanno preso in
+                        considerazione per una potenziale futura assunzione</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center mb-2">
+        <div class="col-md-10">
+            <div class="bg-info rounded mr-md-3 pt-2 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">Presentati in modo più spontaneo</h2>
+                </div>
+                <div class="bg-white shadow-sm mx-auto p-3"
+                     style="width: 80%; height: 200px; border-radius: 21px 21px 0 0;">
+                    <p class="lead text-dark">Nel profilo di ogni candidato verrà posta una guida sulla redazione di un
+                        breve video di presentazione, il quale verrà messo a diretta disposizione per le imprese
+                        interessate. nel profilo di ogni candidato verrà posta una guida sulla redazione di un breve
+                        video di presentazione, il quale verrà messo a diretta disposizione per le imprese interessate.
+                        Considerando il livello di spontaneità che ne scaturisce</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="container my-5">
+
+        <div class="row text-center mb-5">
+            <div class="col">
+                <h5 class="display-4">Storie di successo</h5>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-2 rounded-circle" th:src="@{/images/user-avatar.svg}" width="140" height="140">
+                <h5 class="display-5">Mario Rossi</h5>
+                <p class="lead">Grazie a questa piattaforma sono riuscito a trovare lavoro</p>
+            </div>
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-2  rounded-circle" th:src="@{/images/user-avatar-blue.svg}" width="140" height="140">
+                <h5 class="display-5">Michel Bianchi</h5>
+                <p class="lead">Grazie a questa piattaforma sono riuscito a trovare lavoro</p>
+            </div>
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img bg-white p-2  rounded-circle" th:src="@{/images/user-avatar-green.svg}" width="140" height="140">
+                <h5 class="display-5">Luca Gialli</h5>
+                <p class="lead">Grazie a questa piattaforma sono riuscito a trovare lavoro</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row text-center mb-5">
+        <div class="col">
+            <a th:href="@{/register/private}" class="btn btn-lg btn-outline-primary my-5">Registra ora</a>
+        </div>
+    </div>
+
 </main>
+
 <footer th:replace="master::footer"></footer>
 </body>
 </html>
