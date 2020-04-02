@@ -52,6 +52,22 @@
             <a class="btn btn-primary" th:href="@{#}">Compra!</a>
         </div>
     </div>
+    <div  th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_COMPANY'')')}" class="card my-2" style="min-width: 280px">
+        <div class="card-body">
+            <div class="row text-center justify-content-center">
+                <div class="col-md-4 px-0 mx-2" style="max-width: 100px;min-width: 80px">
+                    <img alt="" class="card-img" style="max-width: 100px; min-width: 80px"
+                         th:src="@{/images/star.svg}">
+                </div>
+                <div class="col-md-8 my-auto text-lg-left">
+                    <p class="card-text my-3 text-center">Visualizza profili preferiti</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a class="btn btn-primary" th:href="@{/search}">Visualizza!</a>
+        </div>
+    </div>
     <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" class="card my-2" style="min-width: 280px">
         <div class="card-body">
             <div class="row text-center justify-content-center">
