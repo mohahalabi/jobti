@@ -17,6 +17,9 @@ public class Private extends User{
     @OneToMany
     private List<WorkingExperience> experiences;
 
+    @ManyToOne
+    private Profession profession;
+
     public Private() {
     }
 
@@ -28,23 +31,26 @@ public class Private extends User{
         this.experiences=new ArrayList<>();
     }
 
+
     public Private(String name, String surname, String email, String password, String country, String region,
-                   String city, int postcode, String address, Date birthdate, String sector){
+                   String city, int postcode, String address, Date birthdate, ProfessionalSector sector, Profession profession){
         super(name, email, password, new Role("ROLE_PRIVATE"), address, postcode, city,
                 region, country, birthdate,sector);
         this.surname=surname;
         this.credits=10;
         this.views=0;
         this.experiences= new ArrayList<>();
+        this.profession = profession;
     }
 
     public Private(String name, String surname, String email, String password, Role role, String address, int postcode,
-                   String city, String region, String country, Date birthdate, String sector, List exp) {
+                   String city, String region, String country, Date birthdate, ProfessionalSector sector,Profession profession, List exp) {
         super(name, email, password, role, address, postcode, city, region, country, birthdate, sector );
         this.surname=surname;
         this.credits=10;
         this.views=0;
         this.experiences= exp;
+        this.profession= profession;
     }
 
 
@@ -78,5 +84,13 @@ public class Private extends User{
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 }

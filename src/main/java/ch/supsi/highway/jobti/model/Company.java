@@ -20,7 +20,7 @@ public class Company extends User {
     }
 
     public Company(String name, String email,  String password, String address, int postcode, String city,
-                   String region, String country, Date birthdate, String sector,
+                   String region, String country, Date birthdate, ProfessionalSector sector,
              String socialReason, String site){
         super(name, email, password, new Role("ROLE_COMPANY"), address, postcode, city,
                  region, country, birthdate, sector);
@@ -29,7 +29,7 @@ public class Company extends User {
     }
 
     public Company(String name, String email, String password, Role role, String address, int postcode, String city,
-                   String region, String country, Date birthdate, String sector, int phoneNum, String socialReason,
+                   String region, String country, Date birthdate, ProfessionalSector sector, int phoneNum, String socialReason,
                    String site, int employeeNum, int rcNum) {
         super(name, email, password, role, address, postcode, city, region, country, birthdate, sector);
         this.phoneNum = phoneNum;

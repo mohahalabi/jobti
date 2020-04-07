@@ -1,9 +1,6 @@
 package ch.supsi.highway.jobti.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -19,8 +16,14 @@ public class WorkingExperience {
     @NotNull
     private Date end;
 
-    @NotNull
-    private String sector;
+    @ManyToOne
+//    @NotNull
+    private ProfessionalSector sector;
+
+
+    @ManyToOne
+//    @NotNull
+    private Profession profession;
 
     @NotNull
     private String jobfunction;
@@ -28,13 +31,15 @@ public class WorkingExperience {
     @NotNull
     private String employer;
 
-    public WorkingExperience(Date begin, Date end, String sector, String jobfunction, String employer) {
+    public WorkingExperience(Date begin, Date end, ProfessionalSector sector, Profession profession,String jobfunction, String employer) {
         this.begin = begin;
         this.end = end;
         this.sector = sector;
+        this.profession = profession;
         this.jobfunction = jobfunction;
         this.employer = employer;
     }
+
 
     public WorkingExperience() {
     }
@@ -63,12 +68,20 @@ public class WorkingExperience {
         this.end = end;
     }
 
-    public String getSector() {
+    public ProfessionalSector getSector() {
         return sector;
     }
 
-    public void setSector(String sector) {
+    public void setSector(ProfessionalSector sector) {
         this.sector = sector;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 
     public String getJobfunction() {

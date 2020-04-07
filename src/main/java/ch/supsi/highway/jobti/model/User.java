@@ -11,6 +11,7 @@ import java.util.Date;
 public abstract class User {
     @Id
     @NotNull
+
     private String email;
 
     @NotNull
@@ -29,7 +30,8 @@ public abstract class User {
     private String region;
     private String country;
 
-    private String sector;
+    @ManyToOne
+    private ProfessionalSector sector;
 
     private String description;
     private Date birthdate;
@@ -47,7 +49,7 @@ public abstract class User {
         this.role=role;
     }
     public User(String name, String email, String password, Role role, String address, int postcode, String city,
-                String region, String country, Date birthdate, String sector) {
+                String region, String country, Date birthdate, ProfessionalSector sector) {
         this.name=name;
         this.email=email;
         this.password= password;
@@ -110,11 +112,11 @@ public abstract class User {
         this.role = role;
     }
 
-    public String getSector() {
+    public ProfessionalSector getSector() {
         return sector;
     }
 
-    public void setSector(String sector) {
+    public void setSector(ProfessionalSector sector) {
         this.sector = sector;
     }
 
