@@ -3,8 +3,6 @@ package ch.supsi.highway.jobti.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Profession {

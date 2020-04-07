@@ -20,6 +20,10 @@ public class Private extends User{
     @ManyToOne
     private Profession profession;
 
+    @OneToMany
+    private List<Education> educationList;
+
+
     public Private() {
     }
 
@@ -29,6 +33,7 @@ public class Private extends User{
         this.credits=10;
         this.views=0;
         this.experiences=new ArrayList<>();
+        this.educationList= new ArrayList<>();
     }
 
 
@@ -41,6 +46,8 @@ public class Private extends User{
         this.views=0;
         this.experiences= new ArrayList<>();
         this.profession = profession;
+        this.educationList= new ArrayList<>();
+
     }
 
     public Private(String name, String surname, String email, String password, String address, int postcode,
@@ -51,6 +58,8 @@ public class Private extends User{
         this.views=0;
         this.experiences= exp;
         this.profession= profession;
+        this.educationList= new ArrayList<>();
+
     }
 
 
@@ -92,5 +101,13 @@ public class Private extends User{
 
     public void setProfession(Profession profession) {
         this.profession = profession;
+    }
+
+    public List<Education> getEducationList() {
+        return educationList;
+    }
+
+    public void setEducationList(List<Education> educationList) {
+        this.educationList = educationList;
     }
 }
