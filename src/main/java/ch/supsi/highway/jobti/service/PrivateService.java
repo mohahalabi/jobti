@@ -65,14 +65,14 @@ public class PrivateService {
 
         if(getAll().size() == 0){
             List<WorkingExperience> we = new ArrayList<>();
-            we.add(new WorkingExperience(new Date(), new Date(), sectorService.getOne("Costruzioni"), professionService.getOne("Muratore"),"Apprendista", "Liceo cantonale"));
+            we.add(new WorkingExperience(new Date(), new Date(), sectorService.getOne("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
             wEService.save(we.get(0));
 
             Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), roleService.findById("ROLE_ADMIN"));
             save(admin);
 
             Private completePrivate = new Private("Luca", "Bianchi", "lucabianchi@jobti.ch", crypto.encode("privato"),
-                    "Via San Gottardo", 6600, "Locarno", "TI", "Svizzera", new Date(), sectorService.getOne("Costruzioni"), professionService.getOne("Muratore"), we );
+                    "Via San Gottardo", 6600, "Locarno", "TI", "Svizzera", new Date(), sectorService.getOne("Costruzioni"), professionService.findById("Muratore"), we );
             save(completePrivate);
             Company completeCompany= new Company("Rossi", "rossi@jobti.ch", crypto.encode("azienda"),new Role("ROLE_COMPANY"), "Via ai Tigli", 6500, "Bellinzona",
                     "TI", "Svizzera", new Date(), sectorService.getOne("Costruzioni"), 911234567, "SA", "www.rossi.ch", 30,123456);

@@ -21,7 +21,7 @@ public class ProfessionService {
         professionRepository.save(profession);
     }
 
-    public Profession getOne(String name){
+    public Profession findById(String name){
         return professionRepository.findById(name).orElse(null);
     }
 
