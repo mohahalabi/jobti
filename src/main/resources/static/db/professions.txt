@@ -1,0 +1,210 @@
+Agricoltura e Ambiente
+- Acquacoltore
+- Agricoltore
+- Astronomo
+- Biologo
+- Casaro
+- Ecologo
+- Enologo
+- Fornaio
+- Giardiniere
+- Meteorologo
+- Olivicoltore
+- Perito agrario
+- Pescatore
+- Sismologo
+- Vinificatore
+- Zoologo
+Costruzioni
+- Agente immobiliare
+- Architetto
+- Architetto di interni
+- Capocantiere
+- Elettricista
+- Falegname
+- Fisico
+- Geometra
+- Idraulico
+- Ingegnere del rischio geologico
+- Ingegnere edile
+- Ingegnere minerario
+- Ingegnere petrolifero
+- Installatore impianti energia rinnovabile
+- Muratore
+- Tappezziere
+- Urbanista
+Cultura e Spettacolo
+- Antropologo
+- Archeologo
+- Attore
+- Ballerino
+- Cameraman
+- Confezionista
+- Cool Hunter
+- Coreografo
+- Costumista
+- Curatore d'arte
+- Disegnatore di moda
+- Florist
+- Fumettista
+- Illustratore
+- Modellista
+- Modello
+- Musicista
+- Organizzatore eventi
+- Parrucchiere
+- Regista
+- Restauratore
+- Tecnico del suono
+- Tecnico delle luci
+- Truccatore
+Finanza
+- Addetto al recupero crediti
+- Analista Finanziario
+- Assicuratore
+- Auditor
+- Broker Finanziario
+- Commercialista
+- Consulente Finanziario
+- Contabile
+- Gestore di Fondi di Investimento
+- Private Banker
+- Promotore Finanziario
+Formazione
+- Addestratore di animali
+- Allenatore sportivo
+- Insegnante di sostegno
+- Insegnante scuola primaria
+- Insegnante scuola secondaria
+- Life Coach
+- Maestro d'infanzia
+- Mediatore interculturale
+- Preside
+- Professore universitario
+Impresa e Consulenza Aziendale
+- Amministrativo
+- Amministratore di Condominio
+- Archivista
+- Brand Manager
+- Consulente del lavoro
+- Consulente di Direzione
+- E-commerce Manager
+- Ingegnere gestionale
+- Ispettore della qualità
+- Manager dello Sport
+- Project Manager
+- Responsabile Aziendale IT
+- Responsabile Commerciale Marketing
+- Responsabile degli Acquisti
+- Responsabile della Logistica
+- Responsabile della Produzione
+- Responsabile delle Risorse Umane
+- Responsabile Prevenzione Protezione
+- Responsabile Ricerca e Sviluppo
+- Responsabile Sviluppo Business
+- Ricercatore Sociale ed Economico
+- Statistico
+- Venditore a domicilio
+- Vetrinista e Visual Merchandiser
+Industria e Trasporti
+- Addetto allo sportello postale
+- Assistente di volo
+- Autista di mezzi pubblici urbani
+- Autotrasportatore
+- Capotreno
+- Carrozziere
+- Comandante navale
+- Controllore traffico aereo
+- Gommista
+- Ingegnere aerospaziale
+- Ingegnere chimico
+- Ingegnere dei materiali
+- Ingegnere dei trasporti
+- Ingegnere navale
+- Ingegnere tessile
+- Macchinista del treno
+- Manutentore meccanico
+- Operaio specializzato meccanico
+- Orafo
+- Perito elettrotecnico
+- Pilota d'aereo
+- Postino
+- Soffiatore e modellatore del vetro
+- Tassista
+- Tecnico di progettazione
+- Tecnico meccanico
+- Tornitore
+- Yacht surveyor
+IT e Media
+- Analista di sistemi
+- App Developer
+- Direttore della Comunicazione
+- Direttore della Pubblicità
+- Editor
+- Giornalista
+- Grafico
+- Ingegnere elettronico
+- Ingegnere informatico
+- Media Influencer
+- Pubblicitario
+- SEO Specialist
+- Social media manager
+- Specialista in Pubbliche Relazioni e Media
+- Sviluppatore di software
+- Traduttore
+- Web designer
+- Web master
+Sanità
+- Assistente sociale
+- Badante
+- Chirurgo plastico
+- Estetista
+- Farmacista
+- Fisioterapista
+- Geriatra
+- Igienista dentale
+- Infermiere
+- Informatore scientifico del farmaco
+- Ingegnere biomedico
+- Istruttore fitness
+- Medico dello sport
+- Nutrizionista
+- Odontoiatra
+- Odontotecnico
+- Omeopata
+- Operatore socio-sanitario
+- Osteopata
+- Otorinolaringoiatra
+- Ottico Optometrista
+- Pediatra
+- Podologo
+- Tecnico ortopedico
+- Tecnico radiologo
+- Veterinario
+Sicurezza e Pubblica Amministrazione
+- Agente di istituto di vigilanza privata
+- Agente di Polizia
+- Assistente alla Balneazione
+- Diplomatico
+- Guardacoste
+- Guardia Forestale
+- Legale
+- Magistrato
+- Manager della P.A.
+- Segretario Comunale
+- Vigile del Fuoco
+- Vigile Urbano
+Turismo e Ristorazione
+- Addetto al servizio catering
+- Agente di viaggio
+- Animatore turistico
+- Bartender
+- Cameriere
+- Chef
+- Demi chef
+- Direttore d'Albergo
+- Guida Turistica
+- Pasticcere
+- Pizzaiolo
+- Receptionist
+- Sommelier
