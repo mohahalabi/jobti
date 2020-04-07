@@ -9,6 +9,9 @@ import ch.supsi.highway.jobti.service.UserService;
 import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -65,8 +70,20 @@ public class MainController {
 
     @GetMapping("/profilehome")
     public String profHome(Model model) {
-        model.addAttribute("private", new Private());
-        model.addAttribute("company", new Company());
+        User  user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<GrantedAuthority> role = user.getAuthorities().stream().findFirst();
+        String roleStr =null;
+        if (role.isPresent())
+            roleStr=role.get().getAuthority();
+
+        if (companyService.findById(user.getUsername())!=null) {
+            Company myComp = companyService.findById(user.getUsername());
+            model.addAttribute("user", myComp);
+        }  else {
+            Private myPriv =privateService.findById(user.getUsername());
+            model.addAttribute("user", myPriv);
+
+        }
         return "profilehome";
     }
 
