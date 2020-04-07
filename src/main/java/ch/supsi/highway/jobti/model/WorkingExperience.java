@@ -20,7 +20,6 @@ public class WorkingExperience {
 //    @NotNull
     private ProfessionalSector sector;
 
-
     @ManyToOne
 //    @NotNull
     private Profession profession;

@@ -12,8 +12,6 @@ public class Profession {
     @Id
     private String name;
 
-
-
     public Profession(){
     }
 

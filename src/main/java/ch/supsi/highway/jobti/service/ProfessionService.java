@@ -22,6 +22,10 @@ public class ProfessionService {
     }
 
     public Profession getOne(String name){
-        return professionRepository.getOne(name);
+        return professionRepository.findById(name).orElse(null);
+    }
+
+    public void saveAll (List<Profession> li){
+        professionRepository.saveAll(li);
     }
 }

@@ -43,9 +43,9 @@ public class Private extends User{
         this.profession = profession;
     }
 
-    public Private(String name, String surname, String email, String password, Role role, String address, int postcode,
+    public Private(String name, String surname, String email, String password, String address, int postcode,
                    String city, String region, String country, Date birthdate, ProfessionalSector sector,Profession profession, List exp) {
-        super(name, email, password, role, address, postcode, city, region, country, birthdate, sector );
+        super(name, email, password, new Role("ROLE_PRIVATE"), address, postcode, city, region, country, birthdate, sector );
         this.surname=surname;
         this.credits=10;
         this.views=0;

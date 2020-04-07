@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,6 +20,10 @@ public class ProfessionalSector {
 
     public ProfessionalSector(){
 
+    }
+    public ProfessionalSector(String name) {
+        this.name = name;
+        this.professions = new ArrayList<>();
     }
 
     public ProfessionalSector(String name, List<Profession> professions) {

@@ -22,7 +22,7 @@ public class ProfessionalSectorService {
     }
 
     public ProfessionalSector getOne(String name){
-        return sectorRepository.getOne(name);
+        return sectorRepository.findById(name).orElse(null);
     }
 
 }
