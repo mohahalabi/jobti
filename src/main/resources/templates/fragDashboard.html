@@ -2,7 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 
-<div class="card-deck" th:fragment="dash">
+<div class="card-deck" th:fragment="dash" th:object="${user}" >
     <div  th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_COMPANY'')')}" class="card my-2" style="min-width: 280px">
         <div class="card-body">
             <div class="row text-center justify-content-center">
@@ -44,7 +44,7 @@
                          th:src="@{/images/money-bag.svg}">
                 </div>
                 <div class="col-md-8 my-auto text-lg-left">
-                    <p class="card-text my-3 text-center">Possiedi <b>5</b> crediti</p>
+                    <p class="card-text my-3 text-center">Possiedi <b th:text="${user.getCredits()}">#</b> crediti</p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                          th:src="@{/images/growth.svg}">
                 </div>
                 <div class="col-md-8 my-auto text-lg-left">
-                    <p class="card-text my-3 text-center">Il tuo profilo è stato visualizzato <b>5</b> volte</p>
+                    <p class="card-text my-3 text-center">Il tuo profilo è stato visualizzato <b th:text="${user.getViews()}">#</b> volte</p>
                 </div>
             </div>
         </div>

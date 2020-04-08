@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="profile">
+<div th:fragment="profile" th:object="${user}">
     <div class="card bg-light p-2">
         <div class="row no-gutters align-items-center">
             <div class="col-md-3" style="background: #868e96;">
@@ -12,8 +12,8 @@
             </div>
             <div class="col-md-9">
                 <div class="card-body text-center">
-                    <h1>Eric Rossetti</h1>
-                    <p class="lead">Tutto fare </p>
+                    <h1 th:text="${user.getName()}">Eric Rossetti</h1>
+                    <p class="lead" th:text="${user.getSector()}">Tutto fare </p>
                 </div>
             </div>
         </div>
@@ -24,13 +24,16 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="choose" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#profile" role="tab">Profilo</a>
+                            <a class="nav-link active" th:href="@{/profilehome#profile}" role="tab">Profilo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#portfolio" role="tab">Portfolio</a>
+                            <a class="nav-link" th:href="@{/profilehome#portfolio}" role="tab">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact" role="tab">Contatta</a>
+                            <a class="nav-link" th:href="@{/profilehome#formazione}" role="tab">Formazione</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/profilehome#contact}" role="tab">Contatta</a>
                         </li>
                     </ul>
                 </div>
@@ -56,6 +59,9 @@
                         </div>
                         <div class="tab-pane" id="portfolio" role="tabpanel">
                             <p class="card-text">Portfolio</p>
+                        </div>
+                        <div class="tab-pane" id="formazione" role="tabpanel">
+                            <p class="card-text">Formazione</p>
                         </div>
                         <div class="tab-pane" id="contact" role="tabpanel">
                             <p class="card-text">Contact</p>
