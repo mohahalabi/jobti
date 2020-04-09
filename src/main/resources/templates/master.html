@@ -41,15 +41,14 @@
                 <a class="nav-link text-dark" th:href="@{/about}">Chi siamo</a>
                 <a class="nav-link text-dark" th:href="@{/contact}">Contattaci</a>
             </div>
-            <div class="navbar-nav" sec:authorize="isAuthenticated()">
 
-            </div>
             <div class="navbar-nav" sec:authorize="!isAuthenticated()">
                 <a class="nav-item btn btn-outline-dark" th:href="@{/login}">Login</a>
             </div>
             <div class="navbar-nav" sec:authorize="isAuthenticated()">
-                <a class="nav-item mx-lg-4 mx-md-4 my-3 my-md-0" th:href="@{/profilehome}">
-                    <img th:src="@{images/user.svg}" style="width: 40px">
+                <a class="nav-link text-dark" th:href="@{/profilehome}">
+<!--                    <img th:src="@{images/user.svg}" style="width: 40px">-->
+                    <i class="fa fa-user"></i> Profilo
                 </a>
                 <a class="nav-item btn btn-outline-dark" th:href="@{/logout}">Logout</a>
             </div>

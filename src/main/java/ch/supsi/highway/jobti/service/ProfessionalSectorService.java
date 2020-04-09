@@ -21,7 +21,7 @@ public class ProfessionalSectorService {
         sectorRepository.save(professionalSector);
     }
 
-    public ProfessionalSector getOne(String name){
+    public ProfessionalSector findById(String name){
         return sectorRepository.findById(name).orElse(null);
     }
 

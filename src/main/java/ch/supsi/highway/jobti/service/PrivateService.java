@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -65,23 +66,36 @@ public class PrivateService {
 
         if(getAll().size() == 0){
             List<WorkingExperience> we = new ArrayList<>();
-            we.add(new WorkingExperience(new Date(), new Date(), sectorService.getOne("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
+            we.add(new WorkingExperience(new Date(), new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
             wEService.save(we.get(0));
 
             Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), roleService.findById("ROLE_ADMIN"));
+            admin.setImage(setEmptyImage(true));
             save(admin);
 
             Private completePrivate = new Private("Luca", "Bianchi", "lucabianchi@jobti.ch", crypto.encode("privato"),
-                    "Via San Gottardo", 6600, "Locarno", "TI", "Svizzera", new Date(), sectorService.getOne("Costruzioni"), professionService.findById("Muratore"), we );
+                    "Via San Gottardo", 6600, "Locarno", "TI", "Svizzera", new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"), we );
+            completePrivate.setImage(setEmptyImage(true));
             save(completePrivate);
             Company completeCompany= new Company("Rossi", "rossi@jobti.ch", crypto.encode("azienda"),new Role("ROLE_COMPANY"), "Via ai Tigli", 6500, "Bellinzona",
-                    "TI", "Svizzera", new Date(), sectorService.getOne("Costruzioni"), 911234567, "SA", "www.rossi.ch", 30,123456);
+                    "TI", "Svizzera", new Date(), sectorService.findById("Costruzioni"), 911234567, "SA", "www.rossi.ch", 30,123456);
+            completeCompany.setImage(setEmptyImage(false));
             companyService.save(completeCompany);
         }
     }
 
-    public byte[] setEmptyImage() throws IOException {
+    public byte[] setEmptyImage(Boolean isPrivate) throws IOException {
+        int seconds = Calendar.getInstance().get(Calendar.SECOND);
+        if(isPrivate){
+            if(seconds%3==0){
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+            } else if(seconds%3==1){
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+            }
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+        }
         return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+
     }
 
     public void populateDBprofessions(String fileName) throws IOException {

@@ -11,21 +11,30 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="row col-12">
-                    <button onclick="toggler()" id="toggler" class="btn btn-outline-primary" type="button" data-toggle="collapse"
+                    <button onclick="toggler()" id="toggler" class="btn btn-outline-primary collapsed" type="button" data-toggle="collapse"
                             data-target="#filters" aria-expanded="false" aria-controls="filters"
                             style="min-width: 38px">
-                            +
+                        <i class="fa fa-plus"></i>
                         </button>
                     <h2 class="col-9 mb-0">Filtra</h2>
                 </div>
                 <hr>
                 <div class="my-1">
-                    <div th:replace="fragRegistration::sector"></div>
+                    <label class="col-12" for="sector">Settore professionale</label>
+                    <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector"
+                            name="sector" title="Scegliere un settore" data-live-search="true" multiple data-max-options="1">
+                    </select>
+                </div>
+                <div class="my-1">
+                    <label class="col-12" for="profession">Professione</label>
+                    <select class="selectpicker form-control col-12 field" data-size="8" data-style="btn-outline-secondary" id="profession"
+                            name="profession" title="Scegliere una professione" data-live-search="true" multiple data-max-options="1">
+                    </select>
                 </div>
                 <div id="filters" class="collapse">
-                    <div class="my-1"></label>
+                    <div class="my-1">
                         <label class="col-12" for="edu">Formazione</label>
-                        <select id="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
+                        <select id="edu" name="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
                                 data-selected-text-format="count" data-header="seleziona formazione">
                             <option>Professionale di base</option>
                             <option>Professionale superiore</option>
@@ -64,73 +73,27 @@
                         <button onclick="toggler()" id="toggler1" class="btn btn-outline-primary" type="button" data-toggle="collapse"
                                 data-target="#filters" aria-expanded="false" aria-controls="filters"
                                 style="min-width: 38px">
-                            +
+                            <i class="fa fa-plus"></i>
                         </button>
                         <p id="txtFilter" class="col-9 mb-0 pl-1 pr-0 my-auto">Visualizza altri filtri</p>
                     </div>
                     <div class="col-12 text-right mt-3 px-0">
-                        <a th:href="@{#}" class="btn btn-primary">Cerca</a>
+                        <button class="btn btn-primary" id="searchButton" >Cerca</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <h2> Risultati</h2>
                 <hr>
-                <div class="card-deck">
-                    <div class="card">
-                        <img th:src="@{images/user-avatar-green.svg}" class="card-img-top p-3" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Pinco Pallino </h5>
-                            <p class="card-text">Parruchiere</p>
-                            <p class="card-text"><small class="text-muted">Ticino, Svizzera</small></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Visita</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img th:src="@{images/user-avatar.svg}" class="card-img-top p-3" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Marco Bianchi </h5>
-                            <p class="card-text">Boscaiolo</p>
-                            <p class="card-text"><small class="text-muted">Grigioni, Svizzera</small></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Visita</a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img th:src="@{images/user-avatar-blue.svg}" class="card-img-top p-3" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">James Bond </h5>
-                            <p class="card-text">Segretario</p>
-                            <p class="card-text"><small class="text-muted">Ticino, Svizzera</small></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-primary">Visita</a>
-                        </div>
-                    </div>
+                <p id="noResult" style="display: none">Nessun risultato</p>
+                <p id="numResult" style="display: none"></p>
+                <div id="results" class="card-deck">
                 </div>
             </div>
         </div>
     </div>
 </main>
 <footer th:replace="master::footer"></footer>
-<script type="text/javascript">
-    function toggler(){
-        var button = document.getElementById("toggler");
-        var button1 = document.getElementById("toggler1");
-        var txt = document.getElementById("txtFilter");
-        if (button.classList.contains("collapsed")){
-            button.innerText="-";
-            button1.innerText="-";
-            txt.innerText="Nascondi filtri"
-        } else {
-            button.innerText="+"
-            button1.innerText="+"
-            txt.innerText="Visualizza più filtri"
-        }
-    };
-</script>
+<script type="text/javascript" th:src="@{/js/search.js}"></script>
 </body>
 </html>

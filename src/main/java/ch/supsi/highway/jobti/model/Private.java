@@ -2,9 +2,7 @@ package ch.supsi.highway.jobti.model;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @DiscriminatorValue("private")
@@ -109,5 +107,12 @@ public class Private extends User{
 
     public void setEducationList(List<Education> educationList) {
         this.educationList = educationList;
+    }
+
+    public int getAge(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getBirthdate());
+        return year-calendar.get(Calendar.YEAR);
     }
 }

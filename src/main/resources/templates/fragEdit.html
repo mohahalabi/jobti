@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="edit">
+<div th:fragment="edit" th:object="${user}">
     <form class="needs-validation" novalidate>
         <h4>Dati personali</h4>
         <div class="row col-md-12 my-4">
@@ -16,20 +16,24 @@
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="name">Nome</label>
-                    <input class="form-control" id="name" placeholder="Nome" required type="text">
+                    <input class="form-control" id="name" placeholder="Nome" required type="text" th:field="*{name}">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 mb-3" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}">
                     <label for="surname">Cognome</label>
-                    <input class="form-control" id="surname" placeholder="Cognome" required type="text">
+                    <input class="form-control" id="surname" placeholder="Cognome" required type="text" th:field="*{surname}">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
             </div>
-            <div th:replace="fragRegistration::datepicker"></div>
+            <div th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}" th:replace="fragRegistration::year('year0')"></div>
+            <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}">
+                <div  th:replace="fragRegistration::datepicker"></div>
+            </div>
+
         </div>
         <hr>
         <div class="row col-md-12 my-4">
@@ -90,7 +94,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="city">Città</label>
                     <input class="form-control field" id="city" name="city" placeholder="Città"
-                           required>
+                           required th:field="*{city}">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -98,7 +102,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="postcode">Codice postale</label>
                     <input class="form-control field" id="postcode" name="postcode" placeholder="CAP"
-                           required>
+                           required th:field="*{postcode}">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -108,7 +112,7 @@
                 <div class="col-md-12 mb-3">
                     <label for="address">Indirizzo</label>
                     <input class="form-control field" id="address" name="address" placeholder="Indirizzo"
-                           required>
+                           required th:field="*{address}">
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -143,6 +147,150 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <div class="row col-md-12 my-4">
+            <button id="educationToggle" class="btn btn-outline-primary" type="button" data-toggle="collapse"
+                    data-target="#educationData" aria-expanded="false" aria-controls="educationData"
+                    style="min-width: 38px">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <h4 class="col-9 mb-0">Formazione</h4>
+        </div>
+        <div id="educationData" class="collapse">
+            <div id="education0" style="display: none">
+                <h5>Formazione 1</h5>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12 mb-0 mt-2">Data inizio</p>
+                    <div th:replace="fragRegistration::month('month01')"></div>
+                    <div th:replace="fragRegistration::year('year01')"></div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12 mb-0 mt-2">Data Fine</p>
+                    <div th:replace="fragRegistration::month('month02')"></div>
+                    <div th:replace="fragRegistration::year('year02')"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label >Tipo di formazione</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label >Istituto</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Titolo conseguito</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="education1" style="display: none">
+                <h5>Esperienza 2</h5>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12  mb-0 mt-2">Data inizio</p>
+                    <div th:replace="fragRegistration::month('month11')"></div>
+                    <div th:replace="fragRegistration::year('year11')"></div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12  mb-0 mt-2">Data Fine</p>
+                    <div th:replace="fragRegistration::month('month12')"></div>
+                    <div th:replace="fragRegistration::year('year12')"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label >Tipo di formazione</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label >Istituto</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Titolo conseguito</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="education2" style="display: none">
+                <h5>Esperienza 3</h5>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12 mb-0 mt-2">Data inizio</p>
+                    <div th:replace="fragRegistration::month('month21')"></div>
+                    <div th:replace="fragRegistration::year('year21')"></div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12  mb-0 mt-2">Data Fine</p>
+                    <div th:replace="fragRegistration::month('month22')"></div>
+                    <div th:replace="fragRegistration::year('year22')"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label >Tipo di formazione</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label >Istituto</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Titolo conseguito</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="education3" style="display: none">
+                <h5>Esperienza 4</h5>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12  mb-0 mt-2">Data inizio</p>
+                    <div th:replace="fragRegistration::month('month31')"></div>
+                    <div th:replace="fragRegistration::year('year31')"></div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12  mb-0 mt-2">Data Fine</p>
+                    <div th:replace="fragRegistration::month('month32')"></div>
+                    <div th:replace="fragRegistration::year('year32')"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label >Tipo di formazione</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label >Istituto</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Titolo conseguito</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div id="education4" style="display: none">
+                <h5>Esperienza 5</h5>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12 mb-0 mt-2">Data inizio</p>
+                    <div th:replace="fragRegistration::month('month41')"></div>
+                    <div th:replace="fragRegistration::year('year41')"></div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <p class="col-md-12 mb-0 mt-2">Data Fine</p>
+                    <div th:replace="fragRegistration::month('month42')"></div>
+                    <div th:replace="fragRegistration::year('year42')"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                        <label >Tipo di formazione</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label >Istituto</label>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label>Titolo conseguito</label>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="row col-md-12 my-3">
+                <button onclick="createEducation()" id="eduCreator" class="btn btn-outline-primary" type="button" style="min-width: 38px">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+                <p id="eduTxtFilter" class="col-9 mb-0 pl-1 pr-0 my-auto">Aggiungi formazione (max 5)</p>
+            </div>
+        </div>
+
         <hr>
         <div class="row col-md-12 my-4">
             <button id="jobToggle" class="btn btn-outline-primary" type="button" data-toggle="collapse"
@@ -223,7 +371,7 @@
                     <div th:replace="fragRegistration::year('year02')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="sector0">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector0"
                                 name="sector0" title="Scegliere un settore" data-live-search="true">
@@ -239,7 +387,23 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="profession0">Professione</label>
+                        <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession0"
+                                name="profession0" title="Professione" data-live-search="true">
+                            <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+                            <option value="Costruzioni">Costruzioni</option>
+                            <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+                            <option value="Finanza">Finanza</option>
+                            <option value="Formazione">Formazione</option>
+                            <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+                            <option value="Industria e trasporti">Industria e trasporti</option>
+                            <option value="Sanità">Sanità</option>
+                            <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+                            <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="function0">Funzione</label>
                         <input class="form-control" id="function0" name="function0" placeholder="Funzione" required type="text">
                     </div>
@@ -259,7 +423,7 @@
                     <div th:replace="fragRegistration::year('year12')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="sector1">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector1"
                                 name="sector1" title="Scegliere un settore" data-live-search="true">
@@ -275,7 +439,23 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="profession1">Professione</label>
+                        <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession1"
+                                name="profession1" title="Professione" data-live-search="true">
+                            <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+                            <option value="Costruzioni">Costruzioni</option>
+                            <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+                            <option value="Finanza">Finanza</option>
+                            <option value="Formazione">Formazione</option>
+                            <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+                            <option value="Industria e trasporti">Industria e trasporti</option>
+                            <option value="Sanità">Sanità</option>
+                            <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+                            <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="function1">Funzione</label>
                         <input class="form-control" id="function1" name="function1" placeholder="Funzione" required type="text">
                     </div>
@@ -295,7 +475,7 @@
                     <div th:replace="fragRegistration::year('year22')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="sector2">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector2"
                                 name="sector2" title="Scegliere un settore" data-live-search="true">
@@ -311,7 +491,23 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="profession2">Professione</label>
+                        <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession2"
+                                name="profession2" title="Professione" data-live-search="true">
+                            <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+                            <option value="Costruzioni">Costruzioni</option>
+                            <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+                            <option value="Finanza">Finanza</option>
+                            <option value="Formazione">Formazione</option>
+                            <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+                            <option value="Industria e trasporti">Industria e trasporti</option>
+                            <option value="Sanità">Sanità</option>
+                            <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+                            <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="function2">Funzione</label>
                         <input class="form-control" id="function2" name="function2" placeholder="Funzione" required type="text">
                     </div>
@@ -331,7 +527,7 @@
                     <div th:replace="fragRegistration::year('year32')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="sector3">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector3"
                                 name="sector3" title="Scegliere un settore" data-live-search="true">
@@ -347,7 +543,23 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="profession3">Professione</label>
+                        <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession3"
+                                name="profession3" title="Professione" data-live-search="true">
+                            <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+                            <option value="Costruzioni">Costruzioni</option>
+                            <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+                            <option value="Finanza">Finanza</option>
+                            <option value="Formazione">Formazione</option>
+                            <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+                            <option value="Industria e trasporti">Industria e trasporti</option>
+                            <option value="Sanità">Sanità</option>
+                            <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+                            <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="function3">Funzione</label>
                         <input class="form-control" id="function3" name="function2" placeholder="Funzione" required type="text">
                     </div>
@@ -367,7 +579,7 @@
                     <div th:replace="fragRegistration::year('year42')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="sector4">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector4"
                                 name="sector4" title="Scegliere un settore" data-live-search="true">
@@ -383,7 +595,23 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="profession4">Professione</label>
+                        <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession4"
+                                name="profession4" title="Professione" data-live-search="true">
+                            <option value="Agricoltura e ambiente">Agricoltura e ambiente</option>
+                            <option value="Costruzioni">Costruzioni</option>
+                            <option value="Cultura e spettacolo">Cultura e spettacolo</option>
+                            <option value="Finanza">Finanza</option>
+                            <option value="Formazione">Formazione</option>
+                            <option value="Impresa e consulenza aziendale">Impresa e consulenza aziendale</option>
+                            <option value="Industria e trasporti">Industria e trasporti</option>
+                            <option value="Sanità">Sanità</option>
+                            <option value="Sicurezza e pubblica amministrazione">Sicurezza e pubblica amministrazione</option>
+                            <option value="Turismo e ristorazione">Turismo e ristorazione</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="function4">Funzione</label>
                         <input class="form-control" id="function4" name="function4" placeholder="Funzione" required type="text">
                     </div>
@@ -401,8 +629,4 @@
 
         <button class="btn btn-primary" type="submit">Conferma</button>
     </form>
-
-    <script>
-
-    </script>
 </div>

@@ -1,4 +1,5 @@
 var numExperiences=0;
+var numEducations=0;
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
     'use strict';
@@ -23,9 +24,23 @@ function createWorkingExperience(){
         var container=document.getElementById("experience"+numExperiences);
         container.style.display = "block";
         numExperiences+=1;
+        if (numExperiences ==5){
+            document.getElementById("creator").disabled=true;
+        }
     } else {
         document.getElementById("creator").disabled=true;
     }
+}
 
-
+function createEducation(){
+    if (numEducations<5){
+        var container=document.getElementById("education"+numEducations);
+        container.style.display = "block";
+        numEducations+=1;
+        if (numEducations ==5){
+            document.getElementById("eduCreator").disabled=true;
+        }
+    } else {
+        document.getElementById("eduCreator").disabled=true;
+    }
 }

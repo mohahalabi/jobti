@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="profile" th:object="${user}">
+<div th:fragment="profile" th:object="${user}" >
     <div class="card bg-light p-2">
         <div class="row no-gutters align-items-center">
             <div class="col-md-3" style="background: #868e96;">
@@ -13,7 +13,14 @@
             <div class="col-md-9">
                 <div class="card-body text-center">
                     <h1 th:text="${user.getName()}">Eric Rossetti</h1>
-                    <p class="lead" th:text="${user.getSector()}">Tutto fare </p>
+                    <p class="lead">
+                        <span th:text="${user.getSector().getName()}"></span>
+                        <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}"> - </span>
+                        <span th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" th:text="${user.getProfession().getName()}"></span>
+                    </p>
+
+
+
                 </div>
             </div>
         </div>
@@ -22,25 +29,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs" id="choose" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" th:href="@{/profilehome#profile}" role="tab">Profilo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/profilehome#portfolio}" role="tab">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/profilehome#formazione}" role="tab">Formazione</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/profilehome#contact}" role="tab">Contatta</a>
-                        </li>
-                    </ul>
+                    <div class="nav nav-pills" id="pills-tab" role="tablist">
+                        <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">Profilo</a>
+                        <a class="nav-link" id="pills-portfolio-tab" data-toggle="pill" href="#pills-portfolio" role="tab" aria-controls="v-pills-portfolio" aria-selected="false">Portfolio</a>
+                        <a class="nav-link" id="pills-education-tab" data-toggle="pill" href="#pills-education" role="tab" aria-controls="v-pills-education" aria-selected="false">Formazione</a>
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="v-pills-contact" aria-selected="false">Contatto</a>
+                    </div>
                 </div>
 
                 <div class="card-body">
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="profile" role="tabpanel">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <h4 class="card-text font-weight-bold">Informazioni personali</h4>
                             <p class="card-text">Nome Cognome: Eric Rossetti</p>
                             <p class="card-text">Data di nascita: 20.10.1994</p>
@@ -48,7 +47,11 @@
                             <p class="card-text">Numero di telefono: 079 111 11 11</p>
                             <p class="card-text">E-mail: email@email.com</p>
                             <p class="card-text">Indirizzo: via la via 4</p>
-
+                        </div>
+                        <div class="tab-pane" id="pills-portfolio" role="tabpanel" aria-labelledby="pills-portfolio-tab">
+                            <p class="card-text">Portfolio</p>
+                        </div>
+                        <div class="tab-pane" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab">
                             <h4 class="card-text font-weight-bold">Formazione</h4>
                             <p class="card-text">Nome Cognome: Eric Rossetti</p>
                             <p class="card-text">Data di nascita: 20.10.1994</p>
@@ -57,13 +60,7 @@
                             <p class="card-text">E-mail: email@email.com</p>
                             <p class="card-text">Indirizzo: via la via 4</p>
                         </div>
-                        <div class="tab-pane" id="portfolio" role="tabpanel">
-                            <p class="card-text">Portfolio</p>
-                        </div>
-                        <div class="tab-pane" id="formazione" role="tabpanel">
-                            <p class="card-text">Formazione</p>
-                        </div>
-                        <div class="tab-pane" id="contact" role="tabpanel">
+                        <div class="tab-pane" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <p class="card-text">Contact</p>
                         </div>
                     </div>
