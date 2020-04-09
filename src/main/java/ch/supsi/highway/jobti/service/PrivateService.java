@@ -65,18 +65,14 @@ public class PrivateService {
         }
 
         if(getAll().size() == 0){
-            List<WorkingExperience> we = new ArrayList<>();
-            we.add(new WorkingExperience(new Date(), new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
-            wEService.save(we.get(0));
+
 
             Private admin= new Private("admin","admin", "admin@jobti.ch",crypto.encode("admin"), roleService.findById("ROLE_ADMIN"));
             admin.setImage(setEmptyImage(true));
             save(admin);
 
-            Private completePrivate = new Private("Luca", "Bianchi", "lucabianchi@jobti.ch", crypto.encode("privato"),
-                    "Via San Gottardo", 6600, "Locarno", "TI", "Svizzera", new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"), we );
-            completePrivate.setImage(setEmptyImage(true));
-            save(completePrivate);
+            populatePrivates();
+
             Company completeCompany= new Company("Rossi", "rossi@jobti.ch", crypto.encode("azienda"),new Role("ROLE_COMPANY"), "Via ai Tigli", 6500, "Bellinzona",
                     "TI", "Svizzera", new Date(), sectorService.findById("Costruzioni"), 911234567, "SA", "www.rossi.ch", 30,123456);
             completeCompany.setImage(setEmptyImage(false));
@@ -123,5 +119,92 @@ public class PrivateService {
             s.setProfessions(ps);
             sectorService.save(s);
         }
+    }
+
+    public void populatePrivates() throws IOException {
+        BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+        Calendar c = Calendar.getInstance();
+        c.set(1980, Calendar.FEBRUARY, 12, 0, 0);
+        Date birth = c.getTime();
+        List<WorkingExperience> we = new ArrayList<>();
+        we.add(new WorkingExperience(new Date(), new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
+        wEService.save(we.get(0));
+        String langs= "Italiano,Francese,Russo";
+        Private completePrivate = new Private("Luca", "Bianchi", "lucabianchi@jobti.ch",
+                crypto.encode("privato"), "Via San Gottardo", 6600, "Locarno",
+                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
+                professionService.findById("Muratore"), we, langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1990, Calendar.MARCH, 12, 0, 0);
+        birth = c.getTime();
+        langs= "Italiano,Tedesco";
+        completePrivate = new Private("Marco", "Di Gioia", "marco@jobti.ch",
+                crypto.encode("privato"), "Via San Giovanni", 6700, "Faido",
+                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
+                professionService.findById("Architetto"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1980, Calendar.MARCH, 12, 0, 0);
+        birth = c.getTime();
+        langs= "Italiano,Ingelese";
+        completePrivate = new Private("Mario", "Bernasconi", "berna@jobti.ch",
+                crypto.encode("privato"), "Via Cantonale ", 6900, "Lugano",
+                "TI", "Svizzera", birth, sectorService.findById("Sanità"),
+                professionService.findById("Farmacista"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1989, Calendar.JANUARY, 10, 0, 0);
+        birth = c.getTime();
+        langs= "Ingelese,Tedesco";
+        completePrivate = new Private("Livia", "Benvenuti", "livia@jobti.ch",
+                crypto.encode("privato"), "Via Principale ", 6542, "Giumaglio",
+                "TI", "Svizzera", birth, sectorService.findById("IT e Media"),
+                professionService.findById("App Developer"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1985, Calendar.OCTOBER, 10, 0, 0);
+        birth = c.getTime();
+        langs= "Italiano,Francese,Ingelese,Tedesco";
+        completePrivate = new Private("Celio", "Fanucci", "celio@jobti.ch",
+                crypto.encode("privato"), "Bahnhofstrasse ", 2855, "Glovelier",
+                "JU", "Svizzera", birth, sectorService.findById("Turismo e Ristorazione"),
+                professionService.findById("Bartender"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1992, Calendar.DECEMBER, 10, 0, 0);
+        birth = c.getTime();
+        langs= "Italiano,Francese,Tedesco,Russso";
+        completePrivate = new Private("Carola", "Ferri", "caro@jobti.ch",
+                crypto.encode("privato"), "Brumakerstrasse", 8038, "Zürich",
+                "ZH", "Svizzera", birth, sectorService.findById("Sanità"),
+                professionService.findById("Pediatra"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1972, Calendar.AUGUST, 10, 0, 0);
+        birth = c.getTime();
+        langs= "Russso";
+        completePrivate = new Private("Lina", "Napolitani", "lina@jobti.ch",
+                crypto.encode("privato"), "Via gabbietta", 1337, "Valorb",
+                "GE", "Svizzera", birth, sectorService.findById("Sanità"),
+                professionService.findById("Omeopata"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
+
+        c.set(1993, Calendar.SEPTEMBER, 10, 0, 0);
+        birth = c.getTime();
+        langs= "Tedesco,Francese";
+        completePrivate = new Private("Valerio", "Lorenzo", "vale@jobti.ch",
+                crypto.encode("privato"), "Via Crucis", 6853, "Origlio",
+                "TI", "Svizzera", birth, sectorService.findById("Sanità"),
+                professionService.findById("Ingegnere minerario"), new ArrayList(), langs );
+        completePrivate.setImage(setEmptyImage(true));
+        save(completePrivate);
     }
 }

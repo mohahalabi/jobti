@@ -32,18 +32,18 @@
                     </select>
                 </div>
                 <div id="filters" class="collapse">
-                    <div class="my-1">
-                        <label class="col-12" for="edu">Formazione</label>
-                        <select id="edu" name="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
-                                data-selected-text-format="count" data-header="seleziona formazione">
-                            <option>Professionale di base</option>
-                            <option>Professionale superiore</option>
-                            <option>SUP, ASP, SPF o universitaria</option>
-                            <option>Bachelor</option>
-                            <option>Master</option>
-                            <option>Dottorato</option>
-                        </select>
-                    </div>
+<!--                    <div class="my-1">-->
+<!--                        <label class="col-12" for="edu">Formazione</label>-->
+<!--                        <select id="edu" name="edu" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple-->
+<!--                                data-selected-text-format="count" data-header="seleziona formazione">-->
+<!--                            <option>Professionale di base</option>-->
+<!--                            <option>Professionale superiore</option>-->
+<!--                            <option>SUP, ASP, SPF o universitaria</option>-->
+<!--                            <option>Bachelor</option>-->
+<!--                            <option>Master</option>-->
+<!--                            <option>Dottorato</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
                     <div class="my-1">
                         <label class="col-12" for="lang">Lingua</label>
                         <select id="lang" class="col-12 px-0 selectpicker" data-style="btn-outline-secondary" multiple
@@ -85,8 +85,9 @@
             <div class="col-md-8">
                 <h2> Risultati</h2>
                 <hr>
-                <p id="noResult" style="display: none">Nessun risultato</p>
-                <p id="numResult" style="display: none"></p>
+                <h4 id="noResult" style="display: none">Nessun risultato</h4>
+                <h4 id="numResult" style="display: none"></h4>
+                <h4 id="noChoice" style="display:none">Scegliere un settore professionale e/o una professione</h4>
                 <div id="results" class="card-deck">
                 </div>
             </div>

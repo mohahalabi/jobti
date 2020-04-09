@@ -101,19 +101,41 @@ public class MainController {
         db.forEach(i->{
             if((sector.equals("")|| i.getSector().getName().equals(sector))&&
                     (profession.equals("")|| i.getProfession().getName().equals(profession))){
-                filtered.add(i);
-//                if(age.equals("")){
-//                    for (int j = 0; j < ages.length; j++) {
-//                        String [] range = ages[j].split("-");
-//                        if(Integer.parseInt(range[0])<=i.getAge() && Integer.parseInt(range[1])>=i.getAge()){
-//
-//                        }
-//                    }
-//                }
-
+                if(age.equals("")){
+                    if(checkLanguages(lang, i.getLanguages()))
+                        filtered.add(i);
+                } else {
+                    for (int j = 0; j < ages.length; j++) {
+                        int userAge= i.getAge();
+                        String [] range = ages[j].split("-");
+                        if (userAge>=Integer.parseInt(range[0])){
+                            if (range.length==1 || (range.length==2 && userAge<=Integer.parseInt(range[1]) )){
+                                if(checkLanguages(lang, i.getLanguages()))
+                                    filtered.add(i);
+                            }
+                        }
+                    }
+                }
             }
         });
         return filtered;
+    }
+
+    public Boolean checkLanguages(String langs, String known){
+        boolean knows =true;
+        if (langs.equals(""))
+            return knows;
+        String [] lang= langs.split(",");
+        List<String> langli= Arrays.asList(lang);
+        String [] knownlang= known.split(",");
+        List<String> knownli= Arrays.asList(knownlang);
+        for (int i = 0; i < langli.size(); i++) {
+            if ( !knownli.contains(langli.get(i))){
+                knows=false;
+            }
+        }
+
+        return knows;
     }
 
     @GetMapping(value = "/user/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
@@ -230,5 +252,4 @@ public class MainController {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     }
-
 }

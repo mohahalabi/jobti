@@ -11,6 +11,7 @@ public class Private extends User{
 
     private int credits;
     private int views;
+    private String languages;
 
     @OneToMany
     private List<WorkingExperience> experiences;
@@ -49,7 +50,8 @@ public class Private extends User{
     }
 
     public Private(String name, String surname, String email, String password, String address, int postcode,
-                   String city, String region, String country, Date birthdate, ProfessionalSector sector,Profession profession, List exp) {
+                   String city, String region, String country, Date birthdate, ProfessionalSector sector,
+                   Profession profession, List exp, String langs) {
         super(name, email, password, new Role("ROLE_PRIVATE"), address, postcode, city, region, country, birthdate, sector );
         this.surname=surname;
         this.credits=10;
@@ -57,6 +59,7 @@ public class Private extends User{
         this.experiences= exp;
         this.profession= profession;
         this.educationList= new ArrayList<>();
+        this.languages=langs;
 
     }
 
@@ -108,6 +111,19 @@ public class Private extends User{
     public void setEducationList(List<Education> educationList) {
         this.educationList = educationList;
     }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public String[] getLanguagesArr() {
+        return languages.split(",");
+    }
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+
 
     public int getAge(){
         int year = Calendar.getInstance().get(Calendar.YEAR);

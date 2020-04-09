@@ -98,6 +98,16 @@ function search() {
     var context = document.querySelector('base').getAttribute('href');
     var sector = document.querySelector("#sector").value;
     var profession = document.querySelector("#profession").value;
+    if(sector===""&& profession===""){
+        document.getElementById("noResult").style.display = "none";
+        document.querySelector("#results").innerHTML=""
+        document.getElementById("numResult").innerHTML=""
+        document.getElementById("noChoice").style.display = "block";
+        return;
+    }else{
+        document.getElementById("noChoice").style.display = "none";
+    }
+
     var lang = $('#lang').val();
     var edu = $('#edu').val();
     var age = $('#age').val();
@@ -131,7 +141,7 @@ function search() {
 function createCard(p) {
     var context = document.querySelector('base').getAttribute('href');
     var field = '<div class="card" style="max-width: 200px">';
-    if (p.image.length != 0)
+    if (p.image!=null && p.image.length != 0)
         field += '<img class="card-img-top" src="' + context + 'user/' + p.email + '/image">';
     field += '<div class="card-body">' +
         '<h5 class="card-title text-center">' + p.surname + ' ' + p.name + '</h5>' +
