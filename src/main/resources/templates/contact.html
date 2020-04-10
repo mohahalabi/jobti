@@ -6,7 +6,7 @@
 
 <header th:replace="master::header"></header>
 
-<div class="container my-5">
+<div class="container py-4 my-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -25,13 +25,13 @@
                                    required>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group mb-5">
                             <label for="message">Messaggio</label>
-                            <textarea class="form-control" id="message" rows="3" style="resize:none" required></textarea>
+                            <textarea class="form-control" id="message" rows="5" style="resize:none" required></textarea>
                         </div>
 
                         <div class="form-group text-center">
-                            <a th:href="@{/}" class="btn btn-primary" >Invia</a>
+                            <a th:href="@{/}" class="btn btn-primary px-4" >Invia</a>
                         </div>
                     </form>
                 </div>

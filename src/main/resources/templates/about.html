@@ -7,94 +7,215 @@
 <header th:replace="master::header"></header>
 
 <main role="main">
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">JobTi</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Chi siamo</h6>
-                        <p class="card-text text-justify">
-                            Siamo un gruppo di studenti che si appresta a concludere il proprio percorso formativo presso la SUPSI. Il team è formato da membri che si sono formati in Economia Aziendale e Ingegneria Informatica, un connubio che ci permette di potervi garantire un servizio di qualità.
-                            Durante l’esperienza formativa abbiamo notato che, soprattutto giovani e neolaureati, riscontravano difficolta nel trovare un impiego nonostante molti di essi avessero dei curricula interessanti.
-                            Dall’altra parte dopo diverse analisi abbiamo notato come il mercato abbia un importante bisogno di lavoratori specializzati.
-                            Tutto ciò risulta in un mercato del lavoro con una forte asimmetria informativa, ed è proprio qua che vogliamo entrare in gioco noi.
-                            Vogliamo essere in Svizzera un punto di riferimento per le aziende e per le persone in cerca d’impiego.
-                            La nostra missione è quella di garantire un servizio volto a semplificare e valorizzare il profilo degli utenti e consentire allo stesso tempo alle imprese di svolgere ricerche mirate sul territorio in un batter d’occhio.
-                            Siamo pronti a rivoluzionare il mercato del lavoro in Svizzera.
-                        </p>
-                    </div>
+
+    <div class="mb-5">
+        <div class="container py-4">
+            <div class="row align-items-center justify-content-center py-5">
+                <div class="col-lg-2 d-none d-lg-block">
+                    <img th:src="@{icons/logo.svg}" alt="chi siamo" class="img-fluid">
+                </div>
+                <div class="col-lg-10">
+                    <h1 class="display-3 text-info mb-4">Chi siamo</h1>
+                    <h5 class="text-muted mb-0">Siamo un gruppo di studenti che si appresta a concludere il
+                        proprio percorso formativo presso la SUPSI. Il team è formato da membri che si sono formati in
+                        Economia Aziendale e Ingegneria Informatica</h5>
                 </div>
             </div>
         </div>
-        <div class="card-deck text-center justify-content-center">
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar-green.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Fabio</h5>
-                    <h5 class="card-title">Metallo</h5>
-                    <p class="card-subtitle">Economia</p>
+    </div>
+
+    <div class="bg-light py-4">
+        <div class="container py-5">
+            <div class="row align-items-center py-4 mb-5">
+                <div class="col-lg-8 order-2 order-lg-1">
+                    <i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                    <h2 class="display-4 mb-4">La nostra motivazione</h2>
+                    <p class="text-justify text-muted mb-4">Durante l’esperienza formativa abbiamo notato che,
+                        soprattutto giovani e neolaureati,
+                        riscontravano difficolta nel trovare un impiego nonostante molti di essi avessero dei curricula
+                        interessanti.
+                        Dall’altra parte dopo diverse analisi abbiamo notato come il mercato abbia un importante bisogno
+                        di lavoratori specializzati.
+                        Tutto ciò risulta in un mercato del lavoro con una forte asimmetria informativa, ed è proprio
+                        qua che vogliamo entrare in gioco noi.</p>
                 </div>
+                <div class="col-lg-4 px-5 mx-auto order-1 order-lg-2">
+                    <img th:src="@{/images/motivation.svg}" alt="motivazione" class="img-fluid mb-4 mb-lg-0"></div>
             </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar-blue.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Andrea</h5>
-                    <h5 class="card-title">Zanetti</h5>
-                    <p class="card-subtitle">Economia</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Alessio</h5>
-                    <h5 class="card-title">Zaccone</h5>
-                    <p class="card-subtitle">Economia</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar-blue.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Avtandil</h5>
-                    <h5 class="card-title">Pataraia</h5>
-                    <p class="card-subtitle">Economia</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Edin</h5>
-                    <h5 class="card-title">Halilovic</h5>
-                    <p class="card-subtitle">Economia</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar-green.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Roberto</h5>
-                    <h5 class="card-title">Bignasca</h5>
-                    <p class="card-subtitle">Informatica</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar-blue.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">Mohammad</h5>
-                    <h5 class="card-title">Halabi</h5>
-                    <p class="card-subtitle">Informatica</p>
-                </div>
-            </div>
-            <div class="card my-3" style="min-width: 155px; max-width: 155px">
-                <img th:src="@{images/user-avatar.svg}" class="card-img-top p-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title mb-0">David</h5>
-                    <h5 class="card-title">Petkov</h5>
-                    <p class="card-subtitle">Informatica</p>
+            <div class="row align-items-center py-4 mb-4">
+                <div class="col-lg-4 px-5 mx-auto">
+                    <img th:src="@{/images/goal.svg}" alt="obbiettivo" class="img-fluid mb-4 mb-lg-0"></div>
+                <div class="col-lg-8">
+                    <i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                    <h2 class="display-4 mb-4">Il nostro obbiettivo</h2>
+                    <p class="text-muted text-justify mb-4"> Vogliamo essere in Svizzera un punto di riferimento per le
+                        aziende e per le persone in cerca d’impiego.
+                        La nostra missione è quella di garantire un servizio volto a semplificare e valorizzare il
+                        profilo degli utenti e consentire allo
+                        stesso tempo alle imprese di svolgere ricerche mirate sul territorio in un batter d’occhio.</p>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <div class="bg-light py-4">
+        <div class="container py-4">
+            <div class="row mb-4">
+                <div class="col-lg-12 text-center">
+                    <h2 class="display-4 font-weight-light mb-4">Il nostro team</h2>
+                    <h5 class="text-muted">Il team è un connubio che ci permette di potervi garantire un servizio di
+                        qualità.</h5>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-green.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Fabio Metallo</h5>
+                        <span class="small text-muted">Co-Founder. Economia</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-blue.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Andrea Zanetti</h5>
+                        <span class="small text-muted">Co-Founder. Economia</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Alessio Zaccone</h5>
+                        <span class="small text-muted">Co-Founder. Economia</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-green.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Avtandil Pataraia</h5>
+                        <span class="small text-muted">Co-Founder. Economia</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+            </div>
+
+            <div class="row text-center">
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-green.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Edin Halilovic</h5>
+                        <span class="small text-muted">Co-Founder. Economia</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">David Petkov</h5>
+                        <span class="small text-muted">Co-Founder. Informatica</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-blue.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Roberto Bignasca</h5>
+                        <span class="small text-muted">Co-Founder. Informatica</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img th:src="@{images/user-avatar-green.svg}"
+                             alt="Metallo" width="120"
+                             class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Mohammad Halabi</h5>
+                        <span class="small text-muted">Co-Founder. Informatica</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="#" class="social-link"><i
+                                    class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+
+            </div>
+            <div class="row text-center mb-5">
+                <div class="col-lg-12 order-2 order-lg-1">
+                    <h4 class="text-muted mb-5"> Siamo pronti a rivoluzionare il mercato del lavoro in
+                        Svizzera.</h4>
+                    <h4 class="text-muted mb-4">Hai bisogno di ulteriori informazioni?</h4>
+                    <a th:href="@{/contact}" class="btn btn-lg btn-outline-secondary px-4 rounded-pill shadow-sm mb-5">Contattaci</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 </main>
 <footer th:replace="master::footer"></footer>
 </body>
