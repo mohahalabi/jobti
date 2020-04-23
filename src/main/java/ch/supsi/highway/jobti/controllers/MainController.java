@@ -15,8 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.*;
 
 @Controller
@@ -221,7 +224,8 @@ public class MainController {
 
     @GetMapping(value="/profile/{id}")
     public String privateProfile(Model model, @PathVariable String id) {
-        Private p = privateService.findById(id);
+        String emailDec= UriUtils.decode(id, "UTF-8");
+        Private p = privateService.findById(emailDec);
         p.setViews(p.getViews()+1);
         privateService.save(p);
         model.addAttribute("user", p);

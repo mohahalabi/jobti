@@ -89,7 +89,7 @@ function validateEmailPass() {
     valid = isEmpty("email") && valid;
     valid = isEmpty("password") && valid;
     var email = document.getElementById("email").value;
-    valid =(/^\w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/g).test(email) && valid;
+    valid =(/^[a-zA-Z_.\-]+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/g).test(email) && valid;
     if (!valid) {
         document.getElementById("email").classList.remove("green-border");
         document.getElementById("email").classList.add("red-border");
