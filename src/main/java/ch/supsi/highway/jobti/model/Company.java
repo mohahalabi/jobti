@@ -1,7 +1,9 @@
 package ch.supsi.highway.jobti.model;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 @DiscriminatorValue("company")
@@ -86,5 +88,12 @@ public class Company extends User {
 
     public void setRcNum(int rcNum) {
         this.rcNum = rcNum;
+    }
+
+    public String getFormattedBD(){
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getBirthdate());
+        String bd = "" + calendar.get(Calendar.YEAR);
+        return bd;
     }
 }

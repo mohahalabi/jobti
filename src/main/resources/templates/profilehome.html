@@ -23,7 +23,10 @@
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}">
-                            <div th:replace="fragProfile::profile"></div>
+                            <div th:replace="fragProfile::privateProfile"></div>
+                        </div>
+                        <div th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}">
+                            <div th:replace="fragProfile::companyProfile"></div>
                         </div>
 
                     </div>
