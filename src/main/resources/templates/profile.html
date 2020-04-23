@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="master::head('JobTI - Ricerca profilo')"></head>
+<body>
+
+<header th:replace="master::header"></header>
+
+<main role="main">
+    <div class="container my-5">
+        <div th:replace="fragProfile::headProfile"></div>
+        <div th:replace="fragProfile::bodyProfile"></div>
+
+    </div>
+</main>
+<footer th:replace="master::footer"></footer>
+</body>
+</html>

@@ -84,13 +84,13 @@ public class PrivateService {
         int seconds = Calendar.getInstance().get(Calendar.SECOND);
         if(isPrivate){
             if(seconds%3==0){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar.jpg"));
             } else if(seconds%3==1){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar-blue.jpg"));
             }
-            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar-green.jpg"));
         }
-        return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
+        return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/company-avatar.jpg"));
 
     }
 
@@ -202,7 +202,7 @@ public class PrivateService {
         langs= "Tedesco,Francese";
         completePrivate = new Private("Valerio", "Lorenzo", "vale@jobti.ch",
                 crypto.encode("privato"), "Via Crucis", 6853, "Origlio",
-                "TI", "Svizzera", birth, sectorService.findById("Sanità"),
+                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
                 professionService.findById("Ingegnere minerario"), new ArrayList(), langs );
         completePrivate.setImage(setEmptyImage(true));
         save(completePrivate);

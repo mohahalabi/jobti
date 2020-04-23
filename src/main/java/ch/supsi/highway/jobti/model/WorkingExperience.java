@@ -2,7 +2,9 @@ package ch.supsi.highway.jobti.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 public class WorkingExperience {
@@ -97,5 +99,19 @@ public class WorkingExperience {
 
     public void setEmployer(String employer) {
         this.employer = employer;
+    }
+
+    public String getFormattedBegin() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getBegin());
+        String bd = calendar.get(Calendar.MONTH)+"."+calendar.get(Calendar.YEAR);
+        return bd;
+    }
+
+    public String getFormattedEnd() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getEnd());
+        String bd = calendar.get(Calendar.MONTH)+"."+calendar.get(Calendar.YEAR);
+        return bd;
     }
 }

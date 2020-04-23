@@ -1,3 +1,8 @@
+document.getElementById("completeProfile").addEventListener('click', function(event) {
+    event.preventDefault();
+    document.getElementById("v-pills-settings-tab").click();
+});
+
 var numExperiences=0;
 var numEducations=0;
 // Example starter JavaScript for disabling form submissions if there are invalid fields

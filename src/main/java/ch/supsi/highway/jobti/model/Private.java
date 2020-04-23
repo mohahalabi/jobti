@@ -123,7 +123,12 @@ public class Private extends User{
         this.languages = languages;
     }
 
-
+    public String getFormattedBD(){
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getBirthdate());
+        String bd = calendar.get(Calendar.DAY_OF_MONTH)+"."+calendar.get(Calendar.MONTH)+"."+calendar.get(Calendar.YEAR);
+        return bd;
+    }
 
     public int getAge(){
         int year = Calendar.getInstance().get(Calendar.YEAR);

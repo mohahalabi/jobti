@@ -32,8 +32,7 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <a class="btn btn-primary" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-               aria-controls="v-pills-settings" aria-selected="false">Completa!</a>
+            <a class="btn btn-primary" href="#" id="completeProfile">Completa!</a>
         </div>
     </div>
     <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" class="card my-2" style="min-width: 280px">
@@ -44,12 +43,13 @@
                          th:src="@{/images/money-bag.svg}">
                 </div>
                 <div class="col-md-8 my-auto text-lg-left">
-                    <p class="card-text my-3 text-center">Possiedi <b th:text="${user.getCredits()}">#</b> crediti</p>
+                    <p th:if="${user.getCredits()!=1}" class="card-text my-3 text-center">Possiedi <b th:text="${user.getCredits()}">#</b> crediti</p>
+                    <p th:if="${user.getCredits()==1}" class="card-text my-3 text-center">Possiedi <b th:text="${user.getCredits()}">#</b> credito</p>
                 </div>
             </div>
         </div>
         <div class="card-footer text-center">
-            <a class="btn btn-primary" th:href="@{#}">Compra!</a>
+            <a class="btn btn-primary" th:href="@{/noFunction}">Compra!</a>
         </div>
     </div>
     <div  th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_COMPANY'')')}" class="card my-2" style="min-width: 280px">
@@ -76,7 +76,8 @@
                          th:src="@{/images/growth.svg}">
                 </div>
                 <div class="col-md-8 my-auto text-lg-left">
-                    <p class="card-text my-3 text-center">Il tuo profilo è stato visualizzato <b th:text="${user.getViews()}">#</b> volte</p>
+                    <p th:if="${user.getViews() ==1 }"class="card-text my-3 text-center">Il tuo profilo è stato visualizzato <b th:text="${user.getViews()}">#</b> volta</p>
+                    <p th:if="${user.getViews() !=1 }"class="card-text my-3 text-center">Il tuo profilo è stato visualizzato <b th:text="${user.getViews()}">#</b> volte</p>
                 </div>
             </div>
         </div>

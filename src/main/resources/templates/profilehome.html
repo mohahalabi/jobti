@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="master::head('JobTI')"></head>
+<head th:replace="master::head('JobTI - Profilo')"></head>
 <body>
 
 <header th:replace="master::header"></header>
@@ -9,7 +9,6 @@
 <main role="main">
     <div class="row m-4">
             <div class="col-sm-3 bg-light">
-<!--                <img alt="" class="rounded-0 py-3" th:src="@{/images/user-avatar-green.svg}" style="min-width: 100px">-->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active col-12" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                     <a class="nav-link col-12" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mio Profilo</a>
@@ -23,7 +22,7 @@
                         <div th:replace="fragDashboard::dash"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div>
+                        <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}">
                             <div th:replace="fragProfile::profile"></div>
                         </div>
 
@@ -32,7 +31,7 @@
                         <div th:replace="fragMessages::message"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div th:replace="fragEdit::edit"></div>
+                        <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" th:replace="fragEdit::edit"></div>
                     </div>
                 </div>
             </div>

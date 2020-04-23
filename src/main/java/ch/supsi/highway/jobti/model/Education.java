@@ -5,7 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 public class Education {
@@ -72,5 +74,19 @@ public class Education {
 
     public void setDegree(String degree) {
         this.degree = degree;
+    }
+
+    public String getFormattedBegin() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getBegin());
+        String bd = calendar.get(Calendar.MONTH)+"."+calendar.get(Calendar.YEAR);
+        return bd;
+    }
+
+    public String getFormattedEnd() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(getEnd());
+        String bd = calendar.get(Calendar.MONTH)+"."+calendar.get(Calendar.YEAR);
+        return bd;
     }
 }

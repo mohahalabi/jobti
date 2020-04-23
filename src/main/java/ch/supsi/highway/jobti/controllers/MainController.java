@@ -140,14 +140,19 @@ public class MainController {
 
     @GetMapping(value = "/user/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
-    public byte[] image(@PathVariable String id) {
+    public byte[] image(Model model , @PathVariable String id) {
         ch.supsi.highway.jobti.model.User u = userService.findById(id);
+
         return u.getImage();
     }
 
     @GetMapping("/contact")
     public String contact() {
         return "contact";
+    }
+    @GetMapping("/noFunction")
+    public String error() {
+        return "noFunction";
     }
 
     @GetMapping("/profilehome")
@@ -166,6 +171,7 @@ public class MainController {
             model.addAttribute("user", myPriv);
 
         }
+        model.addAttribute("detail",false);
         return "profilehome";
     }
 
@@ -214,8 +220,13 @@ public class MainController {
     }
 
     @GetMapping(value="/profile/{id}")
-    public String registerUser(Model model, @PathVariable int id) {
-        return "profilehome";
+    public String privateProfile(Model model, @PathVariable String id) {
+        Private p = privateService.findById(id);
+        p.setViews(p.getViews()+1);
+        privateService.save(p);
+        model.addAttribute("user", p);
+        model.addAttribute("detail", true);
+        return "profile";
     }
 
     @GetMapping(value="/about")
@@ -236,8 +247,10 @@ public class MainController {
     @GetMapping(value = "/icons/fav/{iconName}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] icons(@PathVariable String iconName) throws IOException {
-        if (iconName.equals("logo.jpg"))
-            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/fav/logo.jpg"));
+        if (iconName.equals("logo.png"))
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/fav/logo.png"));
+        else if (iconName.equals("empty-star.png"))
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/empty-star.png"));
         return null;
     }
 
@@ -252,4 +265,6 @@ public class MainController {
         cal.set(Calendar.MILLISECOND, 0);
         return cal.getTime();
     }
+
+
 }

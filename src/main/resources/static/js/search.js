@@ -142,15 +142,17 @@ function createCard(p) {
     var context = document.querySelector('base').getAttribute('href');
     var field = '<div class="card" style="max-width: 200px">';
     if (p.image!=null && p.image.length != 0)
-        field += '<img class="card-img-top" src="' + context + 'user/' + p.email + '/image">';
+        field += '<img class="card-img-top p-2" src="' + context + 'user/' + p.email + '/image">';
     field += '<div class="card-body">' +
         '<h5 class="card-title text-center">' + p.surname + ' ' + p.name + '</h5>' +
         '<p class="card-text text-center">' + p.sector.name + '<br>' + p.profession.name + '</p>' +
-        // '<p class="card-text text-center">'+ p.profession.name +'</p>'+
         '<p class="card-text text-center"><small class="text-muted">' + p.city + '</small></p>' +
         '</div>' +
         '<div class="card-footer text-center">' +
-        '<a href="#" class="btn btn-primary">Visita</a>' +
+        '<a href="/profile/'+p.email+'" class="btn btn-primary">Visita</a>' +
+        '<a class="text-decoration-none mx-3" href="/">'+
+        '<img alt="Aggiungi ai preferiti" id=favorite src="/icons/fav/empty-star.png" width="30px">'+
+        '</a>'+
         '</div>' +
         '</div>';
 
