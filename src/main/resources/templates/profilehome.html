@@ -12,6 +12,7 @@
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active col-12" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
                     <a class="nav-link col-12" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Mio Profilo</a>
+                    <a th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}" class="nav-link col-12" id="v-pills-favorites-tab" data-toggle="pill" href="#v-pills-favorites" role="tab" aria-controls="v-pills-favorites" aria-selected="false">Preferiti</a>
                     <a class="nav-link col-12" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messaggi</a>
                     <a class="nav-link col-12" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Modifica</a>
                 </div>
@@ -34,7 +35,13 @@
                         <div th:replace="fragMessages::message"></div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" th:replace="fragEdit::edit"></div>
+                        <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}" >
+                            <div th:replace="fragEdit::editPrivate"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-favorites" role="tabpanel" aria-labelledby="v-pills-favorites-tab">
+                        <h4 id="noFavorites" style="display: none">Non ci sono preferiti</h4>
+                        <div id="favoritesContainer" class="card-deck"></div>
                     </div>
                 </div>
             </div>
@@ -42,5 +49,6 @@
 </main>
 <footer th:replace="master::footer"></footer>
 <script type="text/javascript" th:src="@{/js/editForm.js}"></script>
+<script type="text/javascript" th:src="@{/js/favorites.js}"></script>
 </body>
 </html>

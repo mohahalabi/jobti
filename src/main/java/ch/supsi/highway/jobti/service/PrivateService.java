@@ -75,18 +75,15 @@ public class PrivateService {
             Company completeCompany= new Company("Rossi", "rossi@jobti.ch", crypto.encode("azienda"),new Role("ROLE_COMPANY"), "Via ai Tigli", 6500, "Bellinzona",
                     "TI", "Svizzera", new Date(), sectorService.findById("Costruzioni"), 911234567, "SA", "www.rossi.ch", 30,123456);
             completeCompany.setImage(setEmptyImage(false));
+            completeCompany.getFavorites().add(findById("SofiaRossi@jobti.ch"));
+            completeCompany.getFavorites().add(findById("DarioMancini@jobti.ch"));
+            completeCompany.getFavorites().add(findById("MarioGuerra@jobti.ch"));
             companyService.save(completeCompany);
         }
     }
 
     public byte[] setEmptyImage(Boolean isPrivate) throws IOException {
-        int seconds = Calendar.getInstance().get(Calendar.SECOND);
         if(isPrivate){
-            if(seconds%3==0){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
-            } else if(seconds%3==1){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
-            }
             return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
         }
         return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/company-avatar.jpg"));

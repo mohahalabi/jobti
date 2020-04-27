@@ -1,9 +1,9 @@
 package ch.supsi.highway.jobti.model;
 
+import net.bytebuddy.agent.builder.AgentBuilder;
+
 import javax.persistence.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 @Entity
 @DiscriminatorValue("company")
@@ -13,6 +13,9 @@ public class Company extends User {
     private String site;
     private int employeeNum;
     private int rcNum;
+
+    @ManyToMany
+    List<Private> favorites;
 
     public Company() {
     }
@@ -28,6 +31,7 @@ public class Company extends User {
                  region, country, birthdate, sector);
         this.socialReason=socialReason;
         this.site= site;
+        this.favorites=new ArrayList<>();
     }
 
     public Company(String name, String email, String password, Role role, String address, int postcode, String city,
@@ -39,6 +43,7 @@ public class Company extends User {
         this.site = site;
         this.employeeNum = employeeNum;
         this.rcNum = rcNum;
+        this.favorites=new ArrayList<>();
     }
 
     public Company(String name, String email, String password, Role role, String address, int postcode, String city, String region, String country, String description, Date birthdate, byte[] image, int phoneNum, String socialReason, String site, int employeeNum, int rcNum) {
@@ -48,6 +53,7 @@ public class Company extends User {
         this.site = site;
         this.employeeNum = employeeNum;
         this.rcNum = rcNum;
+        this.favorites=new ArrayList<>();
     }
 
     public int getPhoneNum() {
@@ -88,6 +94,14 @@ public class Company extends User {
 
     public void setRcNum(int rcNum) {
         this.rcNum = rcNum;
+    }
+
+    public List<Private> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Private> favorites) {
+        this.favorites = favorites;
     }
 
     public String getFormattedBD(){

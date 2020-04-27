@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 
-<div th:fragment="edit" th:object="${user}">
+<div th:fragment="editPrivate" th:object="${user}">
     <form class="needs-validation" novalidate>
         <h4>Dati personali</h4>
         <div class="row col-md-12 my-4">
@@ -29,7 +29,9 @@
                     </div>
                 </div>
             </div>
-            <div th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}" th:replace="fragRegistration::year('year0')"></div>
+            <div th:if="${#authorization.expression('hasRole(''ROLE_COMPANY'')')}">
+                 <div th:replace="fragRegistration::year('year0')"></div>>
+            </div>
             <div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')') || #authorization.expression('hasRole(''ROLE_PRIVATE'')')}">
                 <div  th:replace="fragRegistration::datepicker"></div>
             </div>
@@ -371,7 +373,7 @@
                     <div th:replace="fragRegistration::year('year02')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="sector0">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector0"
                                 name="sector0" title="Scegliere un settore" data-live-search="true">
@@ -387,7 +389,7 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="profession0">Professione</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession0"
                                 name="profession0" title="Professione" data-live-search="true">
@@ -403,9 +405,13 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="function0">Funzione</label>
                         <input class="form-control" id="function0" name="function0" placeholder="Funzione" required type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="employer0">Datore di lavoro</label>
+                        <input class="form-control" id="employer0" name="employer0" placeholder="Nome" required type="text">
                     </div>
                 </div>
                 <hr>
@@ -423,7 +429,7 @@
                     <div th:replace="fragRegistration::year('year12')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="sector1">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector1"
                                 name="sector1" title="Scegliere un settore" data-live-search="true">
@@ -439,7 +445,7 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="profession1">Professione</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession1"
                                 name="profession1" title="Professione" data-live-search="true">
@@ -455,9 +461,13 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="function1">Funzione</label>
                         <input class="form-control" id="function1" name="function1" placeholder="Funzione" required type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="employer1">Datore di lavoro</label>
+                        <input class="form-control" id="employer1" name="employer1" placeholder="Nome" required type="text">
                     </div>
                 </div>
                 <hr>
@@ -475,7 +485,7 @@
                     <div th:replace="fragRegistration::year('year22')"></div>
                 </div>
                 <div class="form-row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="sector2">Settore professionale</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="sector2"
                                 name="sector2" title="Scegliere un settore" data-live-search="true">
@@ -491,7 +501,7 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="profession2">Professione</label>
                         <select class="selectpicker form-control col-12 field" data-size="5" data-style="btn-outline-secondary" id="profession2"
                                 name="profession2" title="Professione" data-live-search="true">
@@ -507,9 +517,13 @@
                             <option value="Turismo e ristorazione">Turismo e ristorazione</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-3 mb-3">
                         <label for="function2">Funzione</label>
                         <input class="form-control" id="function2" name="function2" placeholder="Funzione" required type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="employer2">Datore di lavoro</label>
+                        <input class="form-control" id="employer2" name="employer2" placeholder="Nome" required type="text">
                     </div>
                 </div>
                 <hr>
@@ -563,6 +577,10 @@
                         <label for="function3">Funzione</label>
                         <input class="form-control" id="function3" name="function2" placeholder="Funzione" required type="text">
                     </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="employer3">Datore di lavoro</label>
+                        <input class="form-control" id="employer3" name="employer3" placeholder="Nome" required type="text">
+                    </div>
                 </div>
                 <hr>
             </div>
@@ -614,6 +632,10 @@
                     <div class="col-md-4 mb-3">
                         <label for="function4">Funzione</label>
                         <input class="form-control" id="function4" name="function4" placeholder="Funzione" required type="text">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="employer4">Datore di lavoro</label>
+                        <input class="form-control" id="employer4" name="employer4" placeholder="Nome" required type="text">
                     </div>
                 </div>
                 <hr>

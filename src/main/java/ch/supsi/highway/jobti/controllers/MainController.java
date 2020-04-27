@@ -127,6 +127,23 @@ public class MainController {
         return filtered;
     }
 
+    @GetMapping("/favorites")
+    @ResponseBody
+    public List<Private> favoriteSearch() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Company u = companyService.findById(user.getUsername());
+        return u.getFavorites();
+    }
+
+    @GetMapping("/removeFavorite")
+    public String removeFavorite(@RequestParam String user) {
+        User user1 = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Company u = companyService.findById(user1.getUsername());
+        u.getFavorites().remove(privateService.findById(user));
+        companyService.save(u);
+        return "profilehome";
+    }
+
     public boolean checkLanguages(String langs, String known){
         boolean knows =true;
         if (langs.equals(""))
@@ -183,7 +200,6 @@ public class MainController {
     @ResponseBody
     public byte[] image(Model model , @PathVariable String id) {
         ch.supsi.highway.jobti.model.User u = userService.findById(id);
-
         return u.getImage();
     }
 
@@ -191,6 +207,7 @@ public class MainController {
     public String contact() {
         return "contact";
     }
+
     @GetMapping("/noFunction")
     public String error() {
         return "noFunction";
@@ -198,7 +215,7 @@ public class MainController {
 
     @GetMapping("/profilehome")
     public String profHome(Model model) {
-        User  user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<GrantedAuthority> role = user.getAuthorities().stream().findFirst();
         String roleStr =null;
         if (role.isPresent())
@@ -293,6 +310,8 @@ public class MainController {
             return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/icons/fav/logo.png"));
         else if (iconName.equals("empty-star.png"))
             return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/empty-star.png"));
+        else if (iconName.equals("star.png"))
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/star.png"));
         return null;
     }
 
