@@ -110,8 +110,8 @@ public class MainController {
                     for (int j = 0; j < ages.length; j++) {
                         int userAge= i.getAge();
                         String [] range = ages[j].split("-");
-                        if (userAge>=Integer.parseInt(range[0])){
-                            if (range.length==1 || (range.length==2 && userAge<=Integer.parseInt(range[1]) )){
+                        if (userAge>=Integer.parseInt(range[0].trim())){
+                            if (range.length==1 || (range.length==2 && userAge<=Integer.parseInt(range[1].trim()) )){
                                 if(checkLanguages(lang, i.getLanguages())) {
                                     if (checkeEducation(edu, i.getEducationList())){
                                         if (checkExperience(experience, i.getExperiences()))
@@ -141,7 +141,7 @@ public class MainController {
         Company u = companyService.findById(user1.getUsername());
         u.getFavorites().remove(privateService.findById(user));
         companyService.save(u);
-        return "profilehome";
+        return "redirect:/profilehome";
     }
 
     public boolean checkLanguages(String langs, String known){
@@ -250,23 +250,26 @@ public class MainController {
 
     @PostMapping("/register/private")
     public String registerPrivete(Model model,@ModelAttribute("private") Private p, @ModelAttribute("day") String day,
-                                  @ModelAttribute("month") String month,@ModelAttribute("year") String year) {
+                                  @ModelAttribute("month") String month,@ModelAttribute("year") String year) throws IOException {
         BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
         p.setPassword(crypto.encode(p.getPassword()));
-        p.setBirthdate(getDate(Integer.parseInt(year),Integer.parseInt(month)-1,Integer.parseInt(day)));
+        p.setBirthdate(getDate(Integer.parseInt(year),Integer.parseInt(month),Integer.parseInt(day)));
         p.setRole(roleService.findById("ROLE_PRIVATE"));
+        p.setLanguages("");
         p.setCredits(10);
+        p.setImage(privateService.setEmptyImage(true));
         if(privateService.findById(p.getEmail())==null)
             privateService.save(p);
         return "redirect:/login";
     }
 
     @PostMapping("/register/company")
-    public String registerPrivete(Model model,@ModelAttribute("company") Company c, @ModelAttribute("year") String year) {
+    public String registerPrivete(Model model,@ModelAttribute("company") Company c, @ModelAttribute("year") String year) throws IOException {
         BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
         c.setPassword(crypto.encode(c.getPassword()));
         c.setBirthdate(getDate(Integer.parseInt(year),1,1));
         c.setRole(roleService.findById("ROLE_COMPANY"));
+        c.setImage(privateService.setEmptyImage(false));
         companyService.save(c);
         return "redirect:/login";
     }

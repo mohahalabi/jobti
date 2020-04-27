@@ -30,6 +30,12 @@
                                        required>
                             </div>
                             <div th:replace="fragRegistration::sector"></div>
+                            <div class="form-group">
+                                <label for="profession">Professione</label>
+                                <select class="selectpicker form-control col-12 field" data-size="8" data-style="btn-outline-secondary" id="profession"
+                                        name="profession" title="Scegliere una professione" data-live-search="true" multiple data-max-options="1">
+                                </select>
+                            </div>
                         </div>
                         <div id="tab2" class="tab">
                             <div th:replace="fragRegistration::addresspicker"></div>

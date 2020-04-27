@@ -123,10 +123,10 @@
                         </div>
                         <div class="tab-pane" id="pills-knowledge" role="tabpanel" aria-labelledby="pills-knoledge-tab">
                             <h4 class="card-text">Conoscenze linguistiche</h4>
-                            <div th:if="${user.getLanguagesArr().length==0}">
+                            <div th:if="${user.getLanguages().length()==0}">
                                 <p>Non sono state registrate conoscenze linguistiche.</p>
                             </div>
-                            <div class="row"  th:if="${user.getLanguagesArr().length!=0 }">
+                            <div class="row"  th:if="${user.getLanguages().length()!=0 }">
                                 <button class="btn btn-outline-primary m-2" th:each="lang: ${user.getLanguagesArr()}" th:text="${lang}" disabled></button>
                             </div>
                         </div>

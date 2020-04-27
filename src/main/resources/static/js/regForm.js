@@ -2,6 +2,11 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 var caller = document.currentScript.getAttribute('user');
 
+$(document).ready(function () {
+    populateSector();
+    populateProfession("")
+});
+
 function isEmpty(field) {
     var valid = true;
     if (document.getElementById(field).value === "") {
@@ -237,4 +242,70 @@ function fixStepIndicator(n) {
     }
     //... and adds the "active" class on the current step:
     c[n].className += " active";
+}
+
+$('#sector').change(function () {
+    populateProfession("");
+})
+var old ="old";
+$('#profession').change(function () {
+    var val = document.querySelector("#profession").value;
+    if(val===""){
+        populateProfession();
+    } else {
+        old =val;
+        var selectList = document.getElementsByName("profession");
+        selectList = selectList[0]
+        var selectOptions = selectList.getElementsByTagName('option');
+        for (var i = 1; i < selectOptions.length; i++) {
+            var opt = selectOptions[i];
+            if (opt.value == val) {
+                selectList.removeChild(opt);
+                selectList.insertBefore(opt, selectOptions[0]);
+            }
+        }
+        $('#profession').selectpicker('refresh');
+    }
+
+})
+
+function populateSector() {
+    var context = document.querySelector('base').getAttribute('href');
+    var url = context + "sectors";
+    var options = {method: "GET"};
+    fetch(url, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (elements) {
+            for (let i = 0; i < elements.length; i++) {
+                $('#sector').append('<option value="' + elements[i].name + '">' + elements[i].name + '</option>');
+            }
+        })
+        .then(function () {
+            $('#sector').selectpicker('refresh');
+        })
+}
+
+function populateProfession(firstOpt) {
+    $("#profession").empty();
+    var context = document.querySelector('base').getAttribute('href');
+    var url = context + "professions?sector=" + $("#sector").val();
+    var options = {method: "GET"};
+    fetch(url, options)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (elements) {
+            for (let i = 0; i < elements.length; i++) {
+                if(firstOpt===elements[i].name){
+                    $('#profession').prepend('<option value="' + elements[i].name + '">' + elements[i].name + '</option>');
+                } else {
+                    $('#profession').append('<option value="' + elements[i].name + '">' + elements[i].name + '</option>');
+                }
+            }
+        })
+        .then(function () {
+            $('#profession').selectpicker('refresh');
+        })
 }
