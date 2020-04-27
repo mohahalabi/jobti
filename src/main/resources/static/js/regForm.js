@@ -113,11 +113,12 @@ function validateNameSocial() {
     return valid;
 }
 
-function validateNameSurSector() {
+function validateNameSurSectorProfession() {
     var valid = true;
     valid = isEmpty("name") && valid;
     valid = isEmpty("surname") && valid;
     valid = isSelected("sector") && valid;
+    valid = isSelected("profession") && valid;
 
     return valid;
 }
@@ -171,7 +172,7 @@ function validatePrivateForm() {
             valid = valid && validateEmailPass();
             break;
         case 1:
-            valid = valid && validateNameSurSector();
+            valid = valid && validateNameSurSectorProfession();
             break;
         case 2:
             valid = valid && validateaddress();
