@@ -111,7 +111,8 @@ function search() {
     var lang = $('#lang').val();
     var edu = $('#edu').val();
     var age = $('#age').val();
-    var url = context + "filter?sector=" + sector + "&profession=" + profession + "&edu=" + edu + "&lang=" + lang + "&age=" + age;
+    var exp = $('#experience').val();
+    var url = context + "filter?sector=" + sector + "&profession=" + profession + "&edu=" + edu + "&lang=" + lang + "&age=" + age+ "&experience=" + exp;
     var options = {method: "GET"};
     fetch(url, options)
         .then(function (response) {
@@ -140,7 +141,7 @@ function search() {
 
 function createCard(p) {
     var context = document.querySelector('base').getAttribute('href');
-    var field = '<div class="card" style="max-width: 200px">';
+    var field = '<div class="card m-2" style="min-width: 200px;max-width: 200px">';
     emailencoded = encodeURIComponent(p.email);
     if (p.image!=null && p.image.length != 0)
         field += '<img class="card-img-top p-2" src="' + context + 'user/' + p.email + '/image">';

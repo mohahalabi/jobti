@@ -1,9 +1,6 @@
 package ch.supsi.highway.jobti.controllers;
 
-import ch.supsi.highway.jobti.model.Company;
-import ch.supsi.highway.jobti.model.Private;
-import ch.supsi.highway.jobti.model.Profession;
-import ch.supsi.highway.jobti.model.ProfessionalSector;
+import ch.supsi.highway.jobti.model.*;
 import ch.supsi.highway.jobti.service.*;
 import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriUtils;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class MainController {
@@ -90,31 +86,38 @@ public class MainController {
     @GetMapping("/filter")
     @ResponseBody
     public List<Private> filterSearch(@RequestParam String sector,@RequestParam String profession, @RequestParam String edu,
-                                      @RequestParam String lang,@RequestParam String age) {
+                                      @RequestParam String lang,@RequestParam String age,@RequestParam String experience) {
         List<Private > filtered = new ArrayList<>();
-        String [] edus=edu.split(",");
-        String [] langs= lang.split(",");
         String [] ages = age.split(",");
 
         List<Private> db= privateService.getAll();
         if(db.get(0).getEmail().equals("admin@jobti.ch"))
             db.remove(0);
-        if(sector.equals("")&&profession.equals("")&&edu.equals("")&&lang.equals("")&&age.equals(""))
+        if(sector.equals("")&&profession.equals("")&&edu.equals("")&&lang.equals("")&&age.equals("")&&experience.equals(""))
             return filtered;
         db.forEach(i->{
             if((sector.equals("")|| i.getSector().getName().equals(sector))&&
                     (profession.equals("")|| i.getProfession().getName().equals(profession))){
                 if(age.equals("")){
-                    if(checkLanguages(lang, i.getLanguages()))
-                        filtered.add(i);
+                    if(checkLanguages(lang, i.getLanguages())){
+                        if (checkeEducation(edu, i.getEducationList())){
+                            if (checkExperience(experience, i.getExperiences()))
+                                filtered.add(i);
+                        }
+
+                    }
                 } else {
                     for (int j = 0; j < ages.length; j++) {
                         int userAge= i.getAge();
                         String [] range = ages[j].split("-");
                         if (userAge>=Integer.parseInt(range[0])){
                             if (range.length==1 || (range.length==2 && userAge<=Integer.parseInt(range[1]) )){
-                                if(checkLanguages(lang, i.getLanguages()))
-                                    filtered.add(i);
+                                if(checkLanguages(lang, i.getLanguages())) {
+                                    if (checkeEducation(edu, i.getEducationList())){
+                                        if (checkExperience(experience, i.getExperiences()))
+                                            filtered.add(i);
+                                    }
+                                }
                             }
                         }
                     }
@@ -124,7 +127,7 @@ public class MainController {
         return filtered;
     }
 
-    public Boolean checkLanguages(String langs, String known){
+    public boolean checkLanguages(String langs, String known){
         boolean knows =true;
         if (langs.equals(""))
             return knows;
@@ -139,6 +142,41 @@ public class MainController {
         }
 
         return knows;
+    }
+
+    public boolean checkeEducation( String edus,List<Education> eduList){
+        if (edus.equals(""))
+            return true;
+        List<String> degrees= new ArrayList<>();
+        for (Education e : eduList){
+            degrees.add(e.getDegree());
+        }
+        String [] eduArr= edus.split(",");
+        for (String s : eduArr){
+            if (!degrees.contains(s))
+                return false;
+        }
+        return true;
+    }
+
+    private boolean checkExperience(String exp, List<WorkingExperience> experiences) {
+        if (exp.equals(""))
+            return true;
+        int expYears=0;
+        String [] expArr= exp.split("-");
+        for (WorkingExperience e : experiences){
+            expYears += getDuration(e.getBegin(), e.getEnd());
+        }
+        if((expArr.length<2 && expYears>=11) || expYears>=Integer.parseInt(expArr[0]) && expYears<=Integer.parseInt(expArr[1]))
+                return true;
+        return false;
+    }
+
+    public int getDuration(Date begin, Date end){
+        long diffInMillies = Math.abs(begin.getTime() - end.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+        return (int) diff /365;
     }
 
     @GetMapping(value = "/user/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)

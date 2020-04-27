@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PrivateService {
@@ -30,6 +27,8 @@ public class PrivateService {
     private ProfessionalSectorService sectorService;
     @Autowired
     private ProfessionService professionService;
+    @Autowired
+    private EducationService eduService;
 
     public List<Private> getAll(){
         return pvtRepo.findAll();
@@ -84,11 +83,11 @@ public class PrivateService {
         int seconds = Calendar.getInstance().get(Calendar.SECOND);
         if(isPrivate){
             if(seconds%3==0){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar.jpg"));
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
             } else if(seconds%3==1){
-                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar-blue.jpg"));
+                return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
             }
-            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user-avatar-green.jpg"));
+            return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/user.jpg"));
         }
         return FileUtil.readAsByteArray(this.getClass().getResourceAsStream("/static/images/company-avatar.jpg"));
 
@@ -122,89 +121,87 @@ public class PrivateService {
     }
 
     public void populatePrivates() throws IOException {
-        BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
-        Calendar c = Calendar.getInstance();
-        c.set(1980, Calendar.FEBRUARY, 12, 0, 0);
-        Date birth = c.getTime();
         List<WorkingExperience> we = new ArrayList<>();
         we.add(new WorkingExperience(new Date(), new Date(), sectorService.findById("Costruzioni"), professionService.findById("Muratore"),"Apprendista", "Liceo cantonale"));
         wEService.save(we.get(0));
-        String langs= "Italiano,Francese,Russo";
-        Private completePrivate = new Private("Luca", "Bianchi", "lucabianchi@jobti.ch",
-                crypto.encode("privato"), "Via San Gottardo", 6600, "Locarno",
-                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
-                professionService.findById("Muratore"), we, langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
 
-        c.set(1990, Calendar.MARCH, 12, 0, 0);
-        birth = c.getTime();
-        langs= "Italiano,Tedesco";
-        completePrivate = new Private("Marco", "Di Gioia", "marco@jobti.ch",
-                crypto.encode("privato"), "Via San Giovanni", 6700, "Faido",
-                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
-                professionService.findById("Architetto"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
 
-        c.set(1980, Calendar.MARCH, 12, 0, 0);
-        birth = c.getTime();
-        langs= "Italiano,Ingelese";
-        completePrivate = new Private("Mario", "Bernasconi", "berna@jobti.ch",
-                crypto.encode("privato"), "Via Cantonale ", 6900, "Lugano",
-                "TI", "Svizzera", birth, sectorService.findById("Sanità"),
-                professionService.findById("Farmacista"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+        String [] names = {"Sofia", "Giulia", "Aurora", "Alice", "Ginevra", "Emma", "Giorgia", "Greta", "Martina", "Beatrice",
+                "Luca", "Fabio", "Giulio","Pietro", "Dario", "Paolo", "Carlo", "Enrico", "Mario", "Diego" };
+        String [] surnames ={"Rossi", "Ferrari", "Russo", "Bianchi", "Romano", "Gallo", "Costa", "Fontana", "Moretti", "Marino",
+                "Barbieri", "Lombardi", "Giordano", "Rinaldi", "Mancini", "Martini", "Ferri", "Ferraro", "Guerra", "Carbone"};
 
-        c.set(1989, Calendar.JANUARY, 10, 0, 0);
-        birth = c.getTime();
-        langs= "Ingelese,Tedesco";
-        completePrivate = new Private("Livia", "Benvenuti", "livia@jobti.ch",
-                crypto.encode("privato"), "Via Principale ", 6542, "Giumaglio",
+        String  [] address = {"Via della Pace","Via Nessi"," Via ai Saleggi","Via Dogana","Via Ospedale", "Via Daro",
+                "Via Zurigo","Via Trevano", "Viale Cassone", "Via Curti", "Via Soldati", "Via Odescalchi", "Via Pozzi",
+                "Via alla Torre", "Via Zorzi", "Via Fontana", "Via Zurigo", "Via Motta", "Via Cantonale", "Via Monte Ceneri" };
+        int [] postcodes = {6600, 6500, 6900, 6830, 6850, 6710, 6593};
+        String [] cities = {"Locarno", "Bellinzona", "Lugano", "Chiasso", "Mendrisio", "Biasca", "Cadenazzo"};
+        String [] lang = {"Italiano,Francese,Tedesco,Inglese", "Italiano,Tedesco,Inglese", "Inglese,Francese,Spagnolo",
+                "Italiano,Inglese,Spagnolo", "Italiano,Ingelese,Francese,Tedesco,Russo"};
+        for (int i = 0; i < 20; i++) {
+            Private first = buildPrivate(lang[i/4], names[i],surnames[i],address[i], postcodes[i/3],cities[i/3]);
+            if (i%3==0){
+                first.getEducationList().add(buildEduPriv(first, "Master"));
+                if (i%6==0){
+                    first.getExperiences().add(buildExperience(first));
+                }
+            }
+
+            save(first);
+        }
+    }
+
+    public Private buildPrivate(String langs, String name, String surname, String address, int postcode, String city) throws IOException {
+        BCryptPasswordEncoder crypto = new BCryptPasswordEncoder();
+        Calendar c = Calendar.getInstance();
+        c.set(getRand(1960,2002), getRand(1,12), getRand(1,31), 0, 0);
+        Date birth = c.getTime();
+
+        Private completePrivate = new Private(name, surname, name+surname+"@jobti.ch",
+                crypto.encode("privato"), address, postcode, city,
                 "TI", "Svizzera", birth, sectorService.findById("IT e Media"),
-                professionService.findById("App Developer"), new ArrayList(), langs );
+                professionService.findById("Ingegnere informatico"), new ArrayList(), langs );
         completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+        completePrivate.getEducationList().add(buildEdu(c.get(Calendar.YEAR)+18, "Bachelor"));
+        return completePrivate;
+    }
 
-        c.set(1985, Calendar.OCTOBER, 10, 0, 0);
-        birth = c.getTime();
-        langs= "Italiano,Francese,Ingelese,Tedesco";
-        completePrivate = new Private("Celio", "Fanucci", "celio@jobti.ch",
-                crypto.encode("privato"), "Bahnhofstrasse ", 2855, "Glovelier",
-                "JU", "Svizzera", birth, sectorService.findById("Turismo e Ristorazione"),
-                professionService.findById("Bartender"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+    private static int getRand(int min, int max) {
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    }
 
-        c.set(1992, Calendar.DECEMBER, 10, 0, 0);
-        birth = c.getTime();
-        langs= "Italiano,Francese,Tedesco,Russso";
-        completePrivate = new Private("Carola", "Ferri", "caro@jobti.ch",
-                crypto.encode("privato"), "Brumakerstrasse", 8038, "Zürich",
-                "ZH", "Svizzera", birth, sectorService.findById("Sanità"),
-                professionService.findById("Pediatra"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+    private Education buildEdu(int init, String degree){
+        Calendar c = Calendar.getInstance();
+        c.set(init, Calendar.SEPTEMBER, 1, 0, 0);
+        Date begin = c.getTime();
+        c.set(init+3, Calendar.SEPTEMBER, 1, 0, 0);
+        Date end = c.getTime();
+        Education edu = new Education(begin, end, "SUP, ASP, SPF o universitaria", "SUPSI DTI", degree );
+        eduService.save(edu);
+        return edu;
+    }
 
-        c.set(1972, Calendar.AUGUST, 10, 0, 0);
-        birth = c.getTime();
-        langs= "Russso";
-        completePrivate = new Private("Lina", "Napolitani", "lina@jobti.ch",
-                crypto.encode("privato"), "Via gabbietta", 1337, "Valorb",
-                "GE", "Svizzera", birth, sectorService.findById("Sanità"),
-                professionService.findById("Omeopata"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+    private Education buildEduPriv(Private p, String degree){
+        Calendar c = Calendar.getInstance();
+        c.setTime(p.getEducationList().get(0).getEnd());
+        int init = c.get(Calendar.YEAR);
+        return buildEdu(init, degree);
+    }
 
-        c.set(1993, Calendar.SEPTEMBER, 10, 0, 0);
-        birth = c.getTime();
-        langs= "Tedesco,Francese";
-        completePrivate = new Private("Valerio", "Lorenzo", "vale@jobti.ch",
-                crypto.encode("privato"), "Via Crucis", 6853, "Origlio",
-                "TI", "Svizzera", birth, sectorService.findById("Costruzioni"),
-                professionService.findById("Ingegnere minerario"), new ArrayList(), langs );
-        completePrivate.setImage(setEmptyImage(true));
-        save(completePrivate);
+    private WorkingExperience buildExperience(Private p){
+        Calendar c = Calendar.getInstance();
+        c.setTime(p.getEducationList().get(1).getEnd());
+        int init = c.get(Calendar.YEAR);
+        c.set(init, Calendar.SEPTEMBER, 1, 0, 0);
+        Date begin = c.getTime();
+        c.set(init+6, Calendar.SEPTEMBER, 1, 0, 0);
+        Date end = c.getTime();
+        WorkingExperience we = new WorkingExperience(begin, end, sectorService.findById("IT e Media"),
+                professionService.findById("Ingegnere informatico"), "Funzione", "Datore");
+        wEService.save(we);
+        return we;
     }
 }
+
+
