@@ -78,7 +78,7 @@ public class PrivateService {
             agriAmbi.add(professionService.getOne("Ecologo"));
             agriAmbi.add(professionService.getOne("Enologo"));
             agriAmbi.add(professionService.getOne("Fornaio"));
-            agriAmbi.add(professionService.getOne("Giadiniere"));
+            agriAmbi.add(professionService.getOne("Giardiniere"));
             agriAmbi.add(professionService.getOne("Meteorologo"));
             agriAmbi.add(professionService.getOne("Olivicoltore"));
             agriAmbi.add(professionService.getOne("Perito agrario"));
